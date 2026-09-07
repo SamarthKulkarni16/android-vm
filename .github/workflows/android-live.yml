@@ -3,11 +3,16 @@ name: android-live
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   live-emulator:
     runs-on: ubuntu-latest
     timeout-minutes: 300
     steps:
+      - uses: actions/checkout@v4
+
       - name: Enable KVM group perms
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
@@ -61,3 +66,24 @@ jobs:
             sleep 60
             echo "alive minute $i/295 — job auto-ends at 300min GitHub hard cap"
           done
+
+      - name: Commit debug log (always, for visibility outside the Actions log viewer)
+        if: always()
+        run: |
+          mkdir -p logs
+          {
+            echo "=== ngrok log ==="
+            cat /tmp/ngrok.log 2>&1 || echo "(no ngrok.log found)"
+            echo ""
+            echo "=== ngrok tunnels API response ==="
+            curl -s http://localhost:4040/api/tunnels 2>&1 || echo "(4040 not reachable)"
+            echo ""
+            echo "=== ngrok binary check ==="
+            which ngrok 2>&1
+            ngrok version 2>&1
+          } > logs/last-run.txt
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add logs/last-run.txt
+          git commit -m "debug log from run ${{ github.run_id }}" || echo "nothing to commit"
+          git push || echo "push failed, non-fatal"
