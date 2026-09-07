@@ -36,21 +36,38 @@ jobs:
           disable-animations: true
           emulator-boot-timeout: 600
           script: |
-            adb devices -l
-            echo "minimal test — boot step alone"
+            echo "=== confirm emulator is up ===" >> /tmp/full-script.log
+            adb devices -l >> /tmp/full-script.log 2>&1
 
-      - name: Minimal test - is emulator alive in a separate following step
-        run: |
-          mkdir -p logs
-          {
-            echo "qemu process check:"
-            pgrep -fa qemu || echo "NO QEMU"
-            echo "adb devices:"
-            adb devices -l
-          } > logs/minimal-test-latest.txt
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add logs/minimal-test-latest.txt
-          git commit -m "minimal test for run ${{ github.run_id }}" || echo "nothing to commit"
-          git pull --rebase origin main -q || true
-          git push || echo "push failed, non-fatal"
+            echo "=== opening ngrok tcp tunnel ===" >> /tmp/full-script.log
+            nohup ngrok tcp 5555 --log=stdout > /tmp/ngrok.log 2>&1 &
+            sleep 6
+            ADDR=$(curl -s http://localhost:4040/api/tunnels | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['tunnels'][0]['public_url'])" 2>/dev/null)
+            echo "ADDR is: $ADDR" >> /tmp/full-script.log
+            HOSTPORT=$(echo "$ADDR" | sed 's#tcp://##')
+            echo "adb connect $HOSTPORT" >> /tmp/full-script.log
+
+            echo "=== committing connect address to repo ===" >> /tmp/full-script.log
+            mkdir -p logs
+            echo "adb connect $HOSTPORT" > logs/connect-now.txt
+            echo "run_id: ${{ github.run_id }}" >> logs/connect-now.txt
+            echo "generated: $(date -u)" >> logs/connect-now.txt
+            git config user.name "github-actions"
+            git config user.email "actions@github.com"
+            git add logs/connect-now.txt
+            git commit -m "connect address for run ${{ github.run_id }}" >> /tmp/full-script.log 2>&1
+            git pull --rebase origin main -q >> /tmp/full-script.log 2>&1
+            git push >> /tmp/full-script.log 2>&1
+            echo "commit step done, exit code $?" >> /tmp/full-script.log
+
+            cp /tmp/full-script.log logs/full-script-latest.txt
+            git add logs/full-script-latest.txt
+            git commit -m "script log for run ${{ github.run_id }}"
+            git pull --rebase origin main -q
+            git push
+
+            echo "=== keeping session alive for up to ~4.5 hours ==="
+            for i in $(seq 1 270); do
+              sleep 60
+              echo "alive minute $i/270"
+            done
