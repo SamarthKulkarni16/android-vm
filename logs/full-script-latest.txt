@@ -2,12 +2,3 @@
 List of devices attached
 emulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emulator64_x86_64_arm64 transport_id:1
 
-=== opening ngrok tcp tunnel ===
-ADDR is: 
-adb connect 
-=== committing connect address to repo ===
-[main b10913d] connect address for run 34088459843
- 1 file changed, 3 insertions(+), 3 deletions(-)
-To https://github.com/SamarthKulkarni16/android-vm
-   ba13903..b10913d  main -> main
-commit step done, exit code 0
