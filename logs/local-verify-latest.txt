@@ -1,6 +1,13 @@
-=== adb devices ===
+=== is the emulator process even still running? ===
+NO QEMU PROCESS FOUND — emulator died between steps
+=== adb devices (before restart) ===
 List of devices attached
-emulator-5554	offline
+emulator-5554          offline product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emulator64_x86_64_arm64 transport_id:1
+
+=== restarting adb server cleanly ===
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+List of devices attached
 
 === who is listening on 5555 ===
 nothing found listening on 5555
@@ -12,7 +19,11 @@ attempt 5 not yet 'device' status, waiting...
 attempt 6 not yet 'device' status, waiting...
 attempt 7 not yet 'device' status, waiting...
 attempt 8 not yet 'device' status, waiting...
+attempt 9 not yet 'device' status, waiting...
+attempt 10 not yet 'device' status, waiting...
 === final adb devices ===
 List of devices attached
 
+=== final qemu process check ===
+still no qemu process
 EMULATOR ADB NEVER CAME UP — something deeper is wrong with the boot itself.
