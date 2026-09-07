@@ -36,17 +36,26 @@ jobs:
           disable-animations: true
           emulator-boot-timeout: 600
           script: |
-            adb devices
+            adb devices -l
+            pgrep -fa qemu || echo "no qemu process visible even here"
             echo "Emulator's ADB port (5555) is already a native TCP listener on localhost — no tcpip switch needed."
 
       - name: Verify the emulator's adb port is listening (no tcpip switch)
         run: |
-          echo "=== adb devices ===" | tee /tmp/local-verify.txt
-          adb devices | tee -a /tmp/local-verify.txt
+          echo "=== is the emulator process even still running? ===" | tee /tmp/local-verify.txt
+          (pgrep -fa qemu || echo "NO QEMU PROCESS FOUND — emulator died between steps") | tee -a /tmp/local-verify.txt
+          echo "=== adb devices (before restart) ===" | tee -a /tmp/local-verify.txt
+          adb devices -l | tee -a /tmp/local-verify.txt
+          echo "=== restarting adb server cleanly ===" | tee -a /tmp/local-verify.txt
+          adb kill-server 2>&1 | tee -a /tmp/local-verify.txt
+          sleep 2
+          adb start-server 2>&1 | tee -a /tmp/local-verify.txt
+          sleep 2
+          adb devices -l | tee -a /tmp/local-verify.txt
           echo "=== who is listening on 5555 ===" | tee -a /tmp/local-verify.txt
           (ss -tlnp | grep 5555 || netstat -tlnp | grep 5555 || echo "nothing found listening on 5555") | tee -a /tmp/local-verify.txt
           OK=0
-          for i in $(seq 1 8); do
+          for i in $(seq 1 10); do
             if adb devices | grep -qE "emulator-5554[[:space:]]*device"; then
               OK=1
               echo "EMULATOR ADB CONFIRMED UP on attempt $i" | tee -a /tmp/local-verify.txt
@@ -56,7 +65,9 @@ jobs:
             sleep 3
           done
           echo "=== final adb devices ===" | tee -a /tmp/local-verify.txt
-          adb devices | tee -a /tmp/local-verify.txt
+          adb devices -l | tee -a /tmp/local-verify.txt
+          echo "=== final qemu process check ===" | tee -a /tmp/local-verify.txt
+          (pgrep -fa qemu || echo "still no qemu process") | tee -a /tmp/local-verify.txt
           if [ "$OK" != "1" ]; then
             echo "EMULATOR ADB NEVER CAME UP — something deeper is wrong with the boot itself." | tee -a /tmp/local-verify.txt
             exit 1
