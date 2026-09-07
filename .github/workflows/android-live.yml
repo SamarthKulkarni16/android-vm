@@ -36,8 +36,38 @@ jobs:
           disable-animations: true
           emulator-boot-timeout: 600
           script: |
+            adb devices
             adb tcpip 5555
-            echo "ADB switched to network mode on 5555"
+            sleep 3
+            adb devices
+
+      - name: Verify local adb-over-tcp before exposing it
+        run: |
+          echo "=== pre-check: adb devices ===" | tee /tmp/local-verify.txt
+          adb devices | tee -a /tmp/local-verify.txt
+          echo "=== who is listening on 5555 ===" | tee -a /tmp/local-verify.txt
+          (ss -tlnp | grep 5555 || netstat -tlnp | grep 5555 || echo "nothing found listening on 5555") | tee -a /tmp/local-verify.txt
+          echo "=== forcing a local reconnect on localhost:5555 ===" | tee -a /tmp/local-verify.txt
+          adb disconnect 2>&1 | tee -a /tmp/local-verify.txt
+          sleep 2
+          OK=0
+          for i in $(seq 1 8); do
+            adb connect localhost:5555 2>&1 | tee -a /tmp/local-verify.txt
+            sleep 2
+            if adb devices | grep -q "localhost:5555[[:space:]]*device"; then
+              OK=1
+              echo "LOCAL CONNECT SUCCEEDED on attempt $i" | tee -a /tmp/local-verify.txt
+              break
+            fi
+            echo "attempt $i not yet 'device' status, retrying..." | tee -a /tmp/local-verify.txt
+            sleep 2
+          done
+          echo "=== final adb devices ===" | tee -a /tmp/local-verify.txt
+          adb devices | tee -a /tmp/local-verify.txt
+          if [ "$OK" != "1" ]; then
+            echo "LOCAL ADB-OVER-TCP NEVER CAME UP — the emulator's adbd itself is the problem, not the tunnel. Stopping before wasting an ngrok tunnel on it." | tee -a /tmp/local-verify.txt
+            exit 1
+          fi
 
       - name: Open ngrok TCP tunnel and print connect address
         run: |
@@ -71,6 +101,19 @@ jobs:
           git config user.email "actions@github.com"
           git add logs/connect-now.txt
           git commit -m "connect address for run ${{ github.run_id }}" || echo "nothing to commit"
+          git pull --rebase origin main -q || true
+          git push || echo "push failed, non-fatal"
+
+      - name: Commit local-verify log (always)
+        if: always()
+        run: |
+          mkdir -p logs
+          cp /tmp/local-verify.txt logs/local-verify-latest.txt 2>/dev/null || echo "no local-verify.txt found" > logs/local-verify-latest.txt
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add logs/local-verify-latest.txt
+          git commit -m "local-verify log from run ${{ github.run_id }}" || echo "nothing to commit"
+          git pull --rebase origin main -q || true
           git push || echo "push failed, non-fatal"
 
       - name: Keep session alive
@@ -99,4 +142,5 @@ jobs:
           git config user.email "actions@github.com"
           git add logs/last-run.txt
           git commit -m "debug log from run ${{ github.run_id }}" || echo "nothing to commit"
+          git pull --rebase origin main -q || true
           git push || echo "push failed, non-fatal"
