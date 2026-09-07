@@ -59,6 +59,19 @@ jobs:
           echo "then run: scrcpy"
           echo "=================================================="
           echo "session will stay alive for up to 5 hours"
+          echo "$HOSTPORT" > /tmp/connect-address.txt
+
+      - name: Commit connect address immediately (don't wait for the 5hr keep-alive)
+        run: |
+          mkdir -p logs
+          echo "adb connect $(cat /tmp/connect-address.txt)" > logs/connect-now.txt
+          echo "run_id: ${{ github.run_id }}" >> logs/connect-now.txt
+          echo "generated: $(date -u)" >> logs/connect-now.txt
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add logs/connect-now.txt
+          git commit -m "connect address for run ${{ github.run_id }}" || echo "nothing to commit"
+          git push || echo "push failed, non-fatal"
 
       - name: Keep session alive
         run: |
