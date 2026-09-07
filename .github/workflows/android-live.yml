@@ -36,10 +36,9 @@ jobs:
           disable-animations: true
           emulator-boot-timeout: 600
           script: |
-            exec > >(tee /tmp/full-script.log) 2>&1
             commit_log() {
               mkdir -p logs
-              cp /tmp/full-script.log logs/full-script-latest.txt 2>/dev/null || true
+              cp /tmp/full-script.log logs/full-script-latest.txt 2>/dev/null || echo "no log captured" > logs/full-script-latest.txt
               git config user.name "github-actions"
               git config user.email "actions@github.com"
               git add logs/full-script-latest.txt
@@ -49,6 +48,7 @@ jobs:
             }
             trap commit_log EXIT
 
+            {
             set -e
             echo "=== confirm emulator is up ==="
             adb devices -l
@@ -101,3 +101,4 @@ jobs:
               fi
               echo "alive minute $i/270"
             done
+            } > /tmp/full-script.log 2>&1
