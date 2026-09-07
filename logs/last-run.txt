@@ -1,0 +1,18 @@
+=== ngrok log ===
+t=2026-09-07T00:35:28+0000 lvl=info msg="no configuration paths supplied"
+t=2026-09-07T00:35:28+0000 lvl=info msg="using configuration at default config path" path=/home/runner/.config/ngrok/ngrok.yml
+t=2026-09-07T00:35:28+0000 lvl=info msg="open config file" path=/home/runner/.config/ngrok/ngrok.yml err=<nil>
+t=2026-09-07T00:35:28+0000 lvl=info msg="FIPS 140 mode" enabled=false
+t=2026-09-07T00:35:28+0000 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
+t=2026-09-07T00:35:28+0000 lvl=info msg="client session established" obj=tunnels.session
+t=2026-09-07T00:35:28+0000 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2026-09-07T00:35:29+0000 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=//localhost:5555 url=tcp://4.tcp.us-cal-1.ngrok.io:19327
+t=2026-09-07T00:35:34+0000 lvl=info msg=start pg=/api/tunnels id=7f72499bc3bf3af7
+t=2026-09-07T00:35:34+0000 lvl=info msg=end pg=/api/tunnels id=7f72499bc3bf3af7 status=200 dur=309.892µs
+
+=== ngrok tunnels API response ===
+{"tunnels":[{"name":"command_line","ID":"b561c20248e24645b90e2433a559a93c","uri":"/api/tunnels/command_line","public_url":"tcp://4.tcp.us-cal-1.ngrok.io:19327","proto":"tcp","config":{"addr":"localhost:5555","inspect":false},"metrics":{"conns":{"count":0,"gauge":0,"rate1":0,"rate5":0,"rate15":0,"p50":0,"p90":0,"p95":0,"p99":0},"http":{"count":0,"rate1":0,"rate5":0,"rate15":0,"p50":0,"p90":0,"p95":0,"p99":0}}}],"uri":"/api/tunnels"}
+
+=== ngrok binary check ===
+/usr/local/bin/ngrok
+ngrok version 3.39.11
