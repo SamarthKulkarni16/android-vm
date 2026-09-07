@@ -27,7 +27,7 @@ jobs:
           sudo apt update && sudo apt install -y ngrok
           ngrok config add-authtoken "${{ secrets.NGROK_AUTHTOKEN }}"
 
-      - name: Boot Android emulator (KVM-accelerated)
+      - name: Boot emulator, verify, tunnel, commit address, stay alive (all in one step)
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 31
@@ -38,121 +38,55 @@ jobs:
           ram-size: 2048M
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none
           script: |
+            set -e
+            echo "=== confirm emulator is up ==="
             adb devices -l
-            pgrep -fa qemu || echo "no qemu process visible even here"
-            echo "Emulator's ADB port (5555) is already a native TCP listener on localhost — no tcpip switch needed."
 
-      - name: Verify the emulator's adb port is listening (no tcpip switch)
-        run: |
-          echo "=== is the emulator process even still running? ===" | tee /tmp/local-verify.txt
-          (pgrep -fa qemu || echo "NO QEMU PROCESS FOUND — emulator died between steps") | tee -a /tmp/local-verify.txt
-          echo "=== OOM-killer check ===" | tee -a /tmp/local-verify.txt
-          (dmesg 2>&1 | grep -iE "killed process|out of memory|oom" | tail -20 || echo "dmesg not readable or empty") | tee -a /tmp/local-verify.txt
-          echo "=== memory state ===" | tee -a /tmp/local-verify.txt
-          free -h | tee -a /tmp/local-verify.txt
-          echo "=== disk state ===" | tee -a /tmp/local-verify.txt
-          df -h / | tee -a /tmp/local-verify.txt
-          echo "=== adb devices (before restart) ===" | tee -a /tmp/local-verify.txt
-          adb devices -l | tee -a /tmp/local-verify.txt
-          echo "=== restarting adb server cleanly ===" | tee -a /tmp/local-verify.txt
-          adb kill-server 2>&1 | tee -a /tmp/local-verify.txt
-          sleep 2
-          adb start-server 2>&1 | tee -a /tmp/local-verify.txt
-          sleep 2
-          adb devices -l | tee -a /tmp/local-verify.txt
-          echo "=== who is listening on 5555 ===" | tee -a /tmp/local-verify.txt
-          (ss -tlnp | grep 5555 || netstat -tlnp | grep 5555 || echo "nothing found listening on 5555") | tee -a /tmp/local-verify.txt
-          OK=0
-          for i in $(seq 1 10); do
-            if adb devices | grep -qE "emulator-5554[[:space:]]*device"; then
-              OK=1
-              echo "EMULATOR ADB CONFIRMED UP on attempt $i" | tee -a /tmp/local-verify.txt
-              break
+            echo "=== who is listening on 5555 ==="
+            (ss -tlnp | grep 5555 || netstat -tlnp | grep 5555 || echo "nothing on 5555 yet")
+
+            echo "=== opening ngrok tcp tunnel ==="
+            nohup ngrok tcp 5555 --log=stdout > /tmp/ngrok.log 2>&1 &
+            sleep 6
+            ADDR=""
+            for i in $(seq 1 10); do
+              ADDR=$(curl -s http://localhost:4040/api/tunnels | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['tunnels'][0]['public_url'])" 2>/dev/null || true)
+              if [ -n "$ADDR" ]; then break; fi
+              sleep 3
+            done
+            if [ -z "$ADDR" ]; then
+              echo "ngrok failed to establish a tunnel:"
+              cat /tmp/ngrok.log
+              exit 1
             fi
-            echo "attempt $i not yet 'device' status, waiting..." | tee -a /tmp/local-verify.txt
-            sleep 3
-          done
-          echo "=== final adb devices ===" | tee -a /tmp/local-verify.txt
-          adb devices -l | tee -a /tmp/local-verify.txt
-          echo "=== final qemu process check ===" | tee -a /tmp/local-verify.txt
-          (pgrep -fa qemu || echo "still no qemu process") | tee -a /tmp/local-verify.txt
-          if [ "$OK" != "1" ]; then
-            echo "EMULATOR ADB NEVER CAME UP — something deeper is wrong with the boot itself." | tee -a /tmp/local-verify.txt
-            exit 1
-          fi
+            HOSTPORT=$(echo "$ADDR" | sed 's#tcp://##')
+            echo "=================================================="
+            echo "CONNECT WITH: adb connect $HOSTPORT"
+            echo "then run: scrcpy"
+            echo "=================================================="
 
-      - name: Open ngrok TCP tunnel and print connect address
-        run: |
-          nohup ngrok tcp 5555 --log=stdout > /tmp/ngrok.log 2>&1 &
-          sleep 6
-          for i in $(seq 1 10); do
-            ADDR=$(curl -s http://localhost:4040/api/tunnels | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['tunnels'][0]['public_url'])" 2>/dev/null)
-            if [ -n "$ADDR" ]; then break; fi
-            sleep 3
-          done
-          if [ -z "$ADDR" ]; then
-            echo "ngrok failed to establish a tunnel — check NGROK_AUTHTOKEN secret and /tmp/ngrok.log below"
-            cat /tmp/ngrok.log
-            exit 1
-          fi
-          HOSTPORT=$(echo "$ADDR" | sed 's#tcp://##')
-          echo "=================================================="
-          echo "CONNECT WITH: adb connect $HOSTPORT"
-          echo "then run: scrcpy"
-          echo "=================================================="
-          echo "session will stay alive for up to 5 hours"
-          echo "$HOSTPORT" > /tmp/connect-address.txt
+            echo "=== committing connect address to repo ==="
+            mkdir -p logs
+            echo "adb connect $HOSTPORT" > logs/connect-now.txt
+            echo "run_id: ${{ github.run_id }}" >> logs/connect-now.txt
+            echo "generated: $(date -u)" >> logs/connect-now.txt
+            git config user.name "github-actions"
+            git config user.email "actions@github.com"
+            git add logs/connect-now.txt
+            git commit -m "connect address for run ${{ github.run_id }}" || echo "nothing to commit"
+            git pull --rebase origin main -q || true
+            git push || echo "push failed, non-fatal"
 
-      - name: Commit connect address immediately (don't wait for the 5hr keep-alive)
-        run: |
-          mkdir -p logs
-          echo "adb connect $(cat /tmp/connect-address.txt)" > logs/connect-now.txt
-          echo "run_id: ${{ github.run_id }}" >> logs/connect-now.txt
-          echo "generated: $(date -u)" >> logs/connect-now.txt
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add logs/connect-now.txt
-          git commit -m "connect address for run ${{ github.run_id }}" || echo "nothing to commit"
-          git pull --rebase origin main -q || true
-          git push || echo "push failed, non-fatal"
+            echo "=== confirming emulator + tunnel still alive right after commit ==="
+            pgrep -fa qemu || echo "WARNING: qemu process gone already"
+            adb devices -l
 
-      - name: Commit local-verify log (always)
-        if: always()
-        run: |
-          mkdir -p logs
-          cp /tmp/local-verify.txt logs/local-verify-latest.txt 2>/dev/null || echo "no local-verify.txt found" > logs/local-verify-latest.txt
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add logs/local-verify-latest.txt
-          git commit -m "local-verify log from run ${{ github.run_id }}" || echo "nothing to commit"
-          git pull --rebase origin main -q || true
-          git push || echo "push failed, non-fatal"
-
-      - name: Keep session alive
-        run: |
-          for i in $(seq 1 295); do
-            sleep 60
-            echo "alive minute $i/295 — job auto-ends at 300min GitHub hard cap"
-          done
-
-      - name: Commit debug log (always, for visibility outside the Actions log viewer)
-        if: always()
-        run: |
-          mkdir -p logs
-          {
-            echo "=== ngrok log ==="
-            cat /tmp/ngrok.log 2>&1 || echo "(no ngrok.log found)"
-            echo ""
-            echo "=== ngrok tunnels API response ==="
-            curl -s http://localhost:4040/api/tunnels 2>&1 || echo "(4040 not reachable)"
-            echo ""
-            echo "=== ngrok binary check ==="
-            which ngrok 2>&1
-            ngrok version 2>&1
-          } > logs/last-run.txt
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add logs/last-run.txt
-          git commit -m "debug log from run ${{ github.run_id }}" || echo "nothing to commit"
-          git pull --rebase origin main -q || true
-          git push || echo "push failed, non-fatal"
+            echo "=== keeping session alive for up to ~4.5 hours ==="
+            for i in $(seq 1 270); do
+              sleep 60
+              if ! pgrep -fa qemu > /dev/null; then
+                echo "qemu died at minute $i — ending early"
+                break
+              fi
+              echo "alive minute $i/270"
+            done
