@@ -35,6 +35,8 @@ jobs:
           arch: x86_64
           disable-animations: true
           emulator-boot-timeout: 600
+          ram-size: 2048M
+          emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none
           script: |
             adb devices -l
             pgrep -fa qemu || echo "no qemu process visible even here"
@@ -44,6 +46,12 @@ jobs:
         run: |
           echo "=== is the emulator process even still running? ===" | tee /tmp/local-verify.txt
           (pgrep -fa qemu || echo "NO QEMU PROCESS FOUND — emulator died between steps") | tee -a /tmp/local-verify.txt
+          echo "=== OOM-killer check ===" | tee -a /tmp/local-verify.txt
+          (dmesg 2>&1 | grep -iE "killed process|out of memory|oom" | tail -20 || echo "dmesg not readable or empty") | tee -a /tmp/local-verify.txt
+          echo "=== memory state ===" | tee -a /tmp/local-verify.txt
+          free -h | tee -a /tmp/local-verify.txt
+          echo "=== disk state ===" | tee -a /tmp/local-verify.txt
+          df -h / | tee -a /tmp/local-verify.txt
           echo "=== adb devices (before restart) ===" | tee -a /tmp/local-verify.txt
           adb devices -l | tee -a /tmp/local-verify.txt
           echo "=== restarting adb server cleanly ===" | tee -a /tmp/local-verify.txt
