@@ -1,0 +1,28 @@
+=== pre-check: adb devices ===
+List of devices attached
+emulator-5554	offline
+
+=== who is listening on 5555 ===
+nothing found listening on 5555
+=== forcing a local reconnect on localhost:5555 ===
+disconnected everything
+Connection refused
+attempt 1 not yet 'device' status, retrying...
+Connection refused
+attempt 2 not yet 'device' status, retrying...
+Connection refused
+attempt 3 not yet 'device' status, retrying...
+Connection refused
+attempt 4 not yet 'device' status, retrying...
+Connection refused
+attempt 5 not yet 'device' status, retrying...
+Connection refused
+attempt 6 not yet 'device' status, retrying...
+Connection refused
+attempt 7 not yet 'device' status, retrying...
+Connection refused
+attempt 8 not yet 'device' status, retrying...
+=== final adb devices ===
+List of devices attached
+
+LOCAL ADB-OVER-TCP NEVER CAME UP — the emulator's adbd itself is the problem, not the tunnel. Stopping before wasting an ngrok tunnel on it.
