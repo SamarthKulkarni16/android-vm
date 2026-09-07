@@ -1,0 +1,63 @@
+name: android-live
+
+on:
+  workflow_dispatch:
+
+jobs:
+  live-emulator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - name: Enable KVM group perms
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+          ls -l /dev/kvm
+
+      - name: Install ngrok
+        run: |
+          curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null
+          echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list
+          sudo apt update && sudo apt install -y ngrok
+          ngrok config add-authtoken "${{ secrets.NGROK_AUTHTOKEN }}"
+
+      - name: Boot Android emulator (KVM-accelerated)
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 31
+          target: google_apis
+          arch: x86_64
+          disable-animations: true
+          emulator-boot-timeout: 600
+          script: |
+            adb tcpip 5555
+            echo "ADB switched to network mode on 5555"
+
+      - name: Open ngrok TCP tunnel and print connect address
+        run: |
+          nohup ngrok tcp 5555 --log=stdout > /tmp/ngrok.log 2>&1 &
+          sleep 6
+          for i in $(seq 1 10); do
+            ADDR=$(curl -s http://localhost:4040/api/tunnels | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['tunnels'][0]['public_url'])" 2>/dev/null)
+            if [ -n "$ADDR" ]; then break; fi
+            sleep 3
+          done
+          if [ -z "$ADDR" ]; then
+            echo "ngrok failed to establish a tunnel — check NGROK_AUTHTOKEN secret and /tmp/ngrok.log below"
+            cat /tmp/ngrok.log
+            exit 1
+          fi
+          HOSTPORT=$(echo "$ADDR" | sed 's#tcp://##')
+          echo "=================================================="
+          echo "CONNECT WITH: adb connect $HOSTPORT"
+          echo "then run: scrcpy"
+          echo "=================================================="
+          echo "session will stay alive for up to 5 hours"
+
+      - name: Keep session alive
+        run: |
+          for i in $(seq 1 295); do
+            sleep 60
+            echo "alive minute $i/295 — job auto-ends at 300min GitHub hard cap"
+          done
