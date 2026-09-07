@@ -38,6 +38,19 @@ jobs:
           ram-size: 2048M
           emulator-options: -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim -camera-back none
           script: |
+            exec > >(tee /tmp/full-script.log) 2>&1
+            commit_log() {
+              mkdir -p logs
+              cp /tmp/full-script.log logs/full-script-latest.txt 2>/dev/null || true
+              git config user.name "github-actions"
+              git config user.email "actions@github.com"
+              git add logs/full-script-latest.txt
+              git commit -m "full script log for run ${{ github.run_id }}" || echo "nothing to commit"
+              git pull --rebase origin main -q || true
+              git push || echo "push failed, non-fatal"
+            }
+            trap commit_log EXIT
+
             set -e
             echo "=== confirm emulator is up ==="
             adb devices -l
