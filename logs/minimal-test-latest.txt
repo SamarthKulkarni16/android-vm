@@ -1,0 +1,6 @@
+qemu process check:
+NO QEMU
+adb devices:
+List of devices attached
+emulator-5554          offline product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emulator64_x86_64_arm64 transport_id:1
+
