@@ -36,69 +36,21 @@ jobs:
           disable-animations: true
           emulator-boot-timeout: 600
           script: |
-            commit_log() {
-              mkdir -p logs
-              cp /tmp/full-script.log logs/full-script-latest.txt 2>/dev/null || echo "no log captured" > logs/full-script-latest.txt
-              git config user.name "github-actions"
-              git config user.email "actions@github.com"
-              git add logs/full-script-latest.txt
-              git commit -m "full script log for run ${{ github.run_id }}" || echo "nothing to commit"
-              git pull --rebase origin main -q || true
-              git push || echo "push failed, non-fatal"
-            }
-            trap commit_log EXIT
-
-            {
-            set -e
-            echo "=== confirm emulator is up ==="
             adb devices -l
+            echo "minimal test — boot step alone"
 
-            echo "=== who is listening on 5555 ==="
-            (ss -tlnp | grep 5555 || netstat -tlnp | grep 5555 || echo "nothing on 5555 yet")
-
-            echo "=== opening ngrok tcp tunnel ==="
-            nohup ngrok tcp 5555 --log=stdout > /tmp/ngrok.log 2>&1 &
-            sleep 6
-            ADDR=""
-            for i in $(seq 1 10); do
-              ADDR=$(curl -s http://localhost:4040/api/tunnels | python3 -c "import sys,json;d=json.load(sys.stdin);print(d['tunnels'][0]['public_url'])" 2>/dev/null || true)
-              if [ -n "$ADDR" ]; then break; fi
-              sleep 3
-            done
-            if [ -z "$ADDR" ]; then
-              echo "ngrok failed to establish a tunnel:"
-              cat /tmp/ngrok.log
-              exit 1
-            fi
-            HOSTPORT=$(echo "$ADDR" | sed 's#tcp://##')
-            echo "=================================================="
-            echo "CONNECT WITH: adb connect $HOSTPORT"
-            echo "then run: scrcpy"
-            echo "=================================================="
-
-            echo "=== committing connect address to repo ==="
-            mkdir -p logs
-            echo "adb connect $HOSTPORT" > logs/connect-now.txt
-            echo "run_id: ${{ github.run_id }}" >> logs/connect-now.txt
-            echo "generated: $(date -u)" >> logs/connect-now.txt
-            git config user.name "github-actions"
-            git config user.email "actions@github.com"
-            git add logs/connect-now.txt
-            git commit -m "connect address for run ${{ github.run_id }}" || echo "nothing to commit"
-            git pull --rebase origin main -q || true
-            git push || echo "push failed, non-fatal"
-
-            echo "=== confirming emulator + tunnel still alive right after commit ==="
-            pgrep -fa qemu || echo "WARNING: qemu process gone already"
+      - name: Minimal test - is emulator alive in a separate following step
+        run: |
+          mkdir -p logs
+          {
+            echo "qemu process check:"
+            pgrep -fa qemu || echo "NO QEMU"
+            echo "adb devices:"
             adb devices -l
-
-            echo "=== keeping session alive for up to ~4.5 hours ==="
-            for i in $(seq 1 270); do
-              sleep 60
-              if ! pgrep -fa qemu > /dev/null; then
-                echo "qemu died at minute $i — ending early"
-                break
-              fi
-              echo "alive minute $i/270"
-            done
-            } > /tmp/full-script.log 2>&1
+          } > logs/minimal-test-latest.txt
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add logs/minimal-test-latest.txt
+          git commit -m "minimal test for run ${{ github.run_id }}" || echo "nothing to commit"
+          git pull --rebase origin main -q || true
+          git push || echo "push failed, non-fatal"
