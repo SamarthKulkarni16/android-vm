@@ -1,0 +1,27 @@
+=== ngrok log ===
+t=2026-09-07T00:25:26+0000 lvl=info msg="no configuration paths supplied"
+t=2026-09-07T00:25:26+0000 lvl=info msg="using configuration at default config path" path=/home/runner/.config/ngrok/ngrok.yml
+t=2026-09-07T00:25:26+0000 lvl=info msg="open config file" path=/home/runner/.config/ngrok/ngrok.yml err=<nil>
+t=2026-09-07T00:25:26+0000 lvl=info msg="FIPS 140 mode" enabled=false
+t=2026-09-07T00:25:26+0000 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
+t=2026-09-07T00:25:27+0000 lvl=info msg="client session established" obj=tunnels.session
+t=2026-09-07T00:25:27+0000 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2026-09-07T00:25:27+0000 lvl=eror msg="session closing" obj=tunnels.session err="failed to start tunnel: You must add a credit or debit card before you can use TCP endpoints on a free account. We require a valid card as a way to combat abuse and keep the internet a safe place. This card will NOT be charged.\nAdd a card to your account here: https://dashboard.ngrok.com/settings#id-verification.\r\n\r\nERR_NGROK_8013\r\n"
+t=2026-09-07T00:25:27+0000 lvl=info msg="accept failed" obj=tunnels.session obj=csess id=e5f42ef75667 err="reconnecting session closed"
+t=2026-09-07T00:25:27+0000 lvl=info msg="no more state changes" obj=tunnels.session
+t=2026-09-07T00:25:27+0000 lvl=info msg="INFO received stop request obj=app stopReq=\"{err:{Inner:{Inner:0x32ede9195270}} restart:false}\""
+t=2026-09-07T00:25:27+0000 lvl=info msg="ERROR terminating with error obj=app err=\"failed to start tunnel: You must add a credit or debit card before you can use TCP endpoints on a free account. We require a valid card as a way to combat abuse and keep the internet a safe place. This card will NOT be charged.\\nAdd a card to your account here: https://dashboard.ngrok.com/settings#id-verification.\\r\\n\\r\\nERR_NGROK_8013\\r\\n\""
+t=2026-09-07T00:25:27+0000 lvl=crit msg="command failed" err="failed to start tunnel: You must add a credit or debit card before you can use TCP endpoints on a free account. We require a valid card as a way to combat abuse and keep the internet a safe place. This card will NOT be charged.\nAdd a card to your account here: https://dashboard.ngrok.com/settings#id-verification.\r\n\r\nERR_NGROK_8013\r\n"
+ERROR:  failed to start tunnel: You must add a credit or debit card before you can use TCP endpoints on a free account. We require a valid card as a way to combat abuse and keep the internet a safe place. This card will NOT be charged.
+ERROR:  Add a card to your account here: https://dashboard.ngrok.com/settings#id-verification.
+ERROR:  
+ERROR:  ERR_NGROK_8013
+ERROR:  https://ngrok.com/docs/errors/err_ngrok_8013
+ERROR:  
+
+=== ngrok tunnels API response ===
+(4040 not reachable)
+
+=== ngrok binary check ===
+/usr/local/bin/ngrok
+ngrok version 3.39.11
