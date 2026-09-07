@@ -37,35 +37,28 @@ jobs:
           emulator-boot-timeout: 600
           script: |
             adb devices
-            adb tcpip 5555
-            sleep 3
-            adb devices
+            echo "Emulator's ADB port (5555) is already a native TCP listener on localhost — no tcpip switch needed."
 
-      - name: Verify local adb-over-tcp before exposing it
+      - name: Verify the emulator's adb port is listening (no tcpip switch)
         run: |
-          echo "=== pre-check: adb devices ===" | tee /tmp/local-verify.txt
+          echo "=== adb devices ===" | tee /tmp/local-verify.txt
           adb devices | tee -a /tmp/local-verify.txt
           echo "=== who is listening on 5555 ===" | tee -a /tmp/local-verify.txt
           (ss -tlnp | grep 5555 || netstat -tlnp | grep 5555 || echo "nothing found listening on 5555") | tee -a /tmp/local-verify.txt
-          echo "=== forcing a local reconnect on localhost:5555 ===" | tee -a /tmp/local-verify.txt
-          adb disconnect 2>&1 | tee -a /tmp/local-verify.txt
-          sleep 2
           OK=0
           for i in $(seq 1 8); do
-            adb connect localhost:5555 2>&1 | tee -a /tmp/local-verify.txt
-            sleep 2
-            if adb devices | grep -q "localhost:5555[[:space:]]*device"; then
+            if adb devices | grep -qE "emulator-5554[[:space:]]*device"; then
               OK=1
-              echo "LOCAL CONNECT SUCCEEDED on attempt $i" | tee -a /tmp/local-verify.txt
+              echo "EMULATOR ADB CONFIRMED UP on attempt $i" | tee -a /tmp/local-verify.txt
               break
             fi
-            echo "attempt $i not yet 'device' status, retrying..." | tee -a /tmp/local-verify.txt
-            sleep 2
+            echo "attempt $i not yet 'device' status, waiting..." | tee -a /tmp/local-verify.txt
+            sleep 3
           done
           echo "=== final adb devices ===" | tee -a /tmp/local-verify.txt
           adb devices | tee -a /tmp/local-verify.txt
           if [ "$OK" != "1" ]; then
-            echo "LOCAL ADB-OVER-TCP NEVER CAME UP — the emulator's adbd itself is the problem, not the tunnel. Stopping before wasting an ngrok tunnel on it." | tee -a /tmp/local-verify.txt
+            echo "EMULATOR ADB NEVER CAME UP — something deeper is wrong with the boot itself." | tee -a /tmp/local-verify.txt
             exit 1
           fi
 
