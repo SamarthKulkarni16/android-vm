@@ -1,0 +1,5 @@
+# Authorized adb public keys for the Android Live emulator.
+# Each line is a base64-encoded RSA public key in adb's format.
+# The tunnel-and-serve.sh script writes these into the AVD's
+# /data/misc/adb/adb_keys after boot so authorized PCs can connect.
+QAAAAFdN+h+ZEcOdVnv/k0Zo0/mDVMw1lhUMsRKX6NUm9WR61qb4/XaCy79g5gUKwIYFli6n+BkzZyxYt9CRaG/0y7synna+Trl7UPjiNeVicMJCvZxGzEL+jr3GCpH2OK2j+etDtptKlveJWkTX6hVGs04LIehXHsRA5Mm2jCwY3YhEirmpUIRcgXaURlezKfAsvF1I1KzHawpHVUqqTq4e/PVjEVf/T/kLny1qk2IdtY46XcwPFx/4QDDsLpfhTv40WUhgN3xioEipEd76QLqWBb2/nIWmCHTOTyXPaVzeUEf+zl+Qz/0rSvgh4NRbJ0Y0163jeHBB7y6Y8gbGvVBvGW5sCcq+/5lj/Xvv+1gvXLyXB/zGWKQQjFkWxoPRnt1zi0pVuxteLCxVpfwNcVgcPe4+wW7Z5NYtyROhsIQMn9o0RaueSxLzRBhilw8S2og8PeyzJIVUzOKw+Fy87+gwAhYctU0jGDAO4Kjk6B0ouv8Km6wYSchl78sryV5PxvCKHvgUXlIfhWvDd9Zmn+JE5tRjOg4ShWwIiA4UzW2Cmu0YBUHDkSm/HEEFexIKUsicRnVoAc+11kaX3LcICnkq7E/0kCgzEtprA80eCL4Q6ac71wpHeMpIlRUDtNbtYmE11jJjT2pz4SBqjt1vtax+TQJgByX50qXYO5hvqZiLCfPmTHwACwEAAQA=

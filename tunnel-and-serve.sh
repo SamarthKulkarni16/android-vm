@@ -13,6 +13,26 @@ save_state() {
 echo "=== confirm emulator is up ===" >> /tmp/full-script.log
 adb devices -l >> /tmp/full-script.log 2>&1 || true
 
+echo "=== authorizing trusted adb keys ===" >> /tmp/full-script.log
+if [ -f adb-keys/authorized_keys ]; then
+  adb root >> /tmp/full-script.log 2>&1 || true
+  sleep 2
+  adb wait-for-device >> /tmp/full-script.log 2>&1 || true
+  adb shell 'mkdir -p /data/misc/adb' >> /tmp/full-script.log 2>&1 || true
+  # Append repo whitelisted keys to the device's authorized adb keys
+  adb push adb-keys/authorized_keys /data/misc/adb/keys-incoming.txt >> /tmp/full-script.log 2>&1 || true
+  adb shell 'touch /data/misc/adb/adb_keys; cat /data/misc/adb/keys-incoming.txt >> /data/misc/adb/adb_keys; sort -u /data/misc/adb/adb_keys -o /data/misc/adb/adb_keys; chown system:system /data/misc/adb/adb_keys; chmod 640 /data/misc/adb/adb_keys; rm -f /data/misc/adb/keys-incoming.txt' >> /tmp/full-script.log 2>&1 || true
+  adb shell 'stop adbd; start adbd' >> /tmp/full-script.log 2>&1 || true
+  sleep 3
+  adb connect localhost:5555 >> /tmp/full-script.log 2>&1 || true
+  sleep 2
+  adb wait-for-device >> /tmp/full-script.log 2>&1 || true
+  echo "adb keys authorized:" >> /tmp/full-script.log
+  adb shell 'wc -l /data/misc/adb/adb_keys' >> /tmp/full-script.log 2>&1 || true
+else
+  echo "WARNING: no adb-keys/authorized_keys file found" >> /tmp/full-script.log
+fi
+
 git config user.name "github-actions"
 git config user.email "actions@github.com"
 cp /tmp/full-script.log logs/full-script-latest.txt
