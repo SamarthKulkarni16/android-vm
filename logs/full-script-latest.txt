@@ -2,3 +2,24 @@
 List of devices attached
 emulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emulator64_x86_64_arm64 transport_id:1
 
+=== opening ngrok tcp tunnel ===
+got address on attempt 1
+ADDR is: tcp://4.tcp.us-cal-1.ngrok.io:20254
+=== ngrok's own log ===
+t=2026-09-08T00:10:12+0000 lvl=info msg="no configuration paths supplied"
+t=2026-09-08T00:10:12+0000 lvl=info msg="using configuration at default config path" path=/home/runner/.config/ngrok/ngrok.yml
+t=2026-09-08T00:10:12+0000 lvl=info msg="open config file" path=/home/runner/.config/ngrok/ngrok.yml err=<nil>
+t=2026-09-08T00:10:12+0000 lvl=info msg="FIPS 140 mode" enabled=false
+t=2026-09-08T00:10:12+0000 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
+t=2026-09-08T00:10:13+0000 lvl=info msg="client session established" obj=tunnels.session
+t=2026-09-08T00:10:13+0000 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2026-09-08T00:10:13+0000 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=//localhost:5555 url=tcp://4.tcp.us-cal-1.ngrok.io:20254
+t=2026-09-08T00:10:18+0000 lvl=info msg=start pg=/api/tunnels id=9cfba427c67c9ff5
+t=2026-09-08T00:10:18+0000 lvl=info msg=end pg=/api/tunnels id=9cfba427c67c9ff5 status=200 dur=244.509µs
+adb connect 4.tcp.us-cal-1.ngrok.io:20254
+=== committing connect address to repo ===
+[main 5f97b13] connect address for run 34172349360
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+To https://github.com/SamarthKulkarni16/android-vm
+   d207b7d..5f97b13  main -> main
+commit step done
