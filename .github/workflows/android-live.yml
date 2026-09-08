@@ -2,6 +2,11 @@ name: android-live
 
 on:
   workflow_dispatch:
+  schedule:
+    # 5:00 AM IST daily = 23:30 UTC previous day
+    - cron: '30 23 * * *'
+    # ~11:00 AM IST daily = 05:30 UTC same day (15 min after session 1's ~345min run ends)
+    - cron: '30 5 * * *'
 
 permissions:
   contents: write
@@ -9,7 +14,7 @@ permissions:
 jobs:
   live-emulator:
     runs-on: ubuntu-latest
-    timeout-minutes: 300
+    timeout-minutes: 355
     steps:
       - uses: actions/checkout@v4
 
@@ -27,12 +32,28 @@ jobs:
           sudo apt update && sudo apt install -y ngrok
           ngrok config add-authtoken "${{ secrets.NGROK_AUTHTOKEN }}"
 
-      - name: Boot emulator, verify, tunnel, commit address, stay alive (all in one step)
+      - name: Restore persisted AVD state (installed apps, logins) if it exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p ~/.android/avd
+          if gh release download avd-state -p 'avd-state.tar.gz' -O /tmp/avd-state.tar.gz --clobber 2>/tmp/gh-dl-err.txt; then
+            echo "Found prior state, restoring..."
+            tar xzf /tmp/avd-state.tar.gz -C ~/.android/avd
+            ls -la ~/.android/avd
+          else
+            echo "No prior state found (first run, or release doesn't exist yet):"
+            cat /tmp/gh-dl-err.txt
+          fi
+
+      - name: Boot emulator (reuses restored AVD if present), verify, tunnel, commit address, save state, stay alive
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 31
           target: google_apis
           arch: x86_64
+          avd-name: persistent_avd
+          force-avd-creation: false
           disable-animations: true
           emulator-boot-timeout: 600
-          script: RUN_ID=${{ github.run_id }} bash tunnel-and-serve.sh
+          script: RUN_ID=${{ github.run_id }} GH_TOKEN=${{ github.token }} bash tunnel-and-serve.sh

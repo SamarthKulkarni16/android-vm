@@ -1,6 +1,15 @@
 #!/bin/bash
 set -x
 mkdir -p logs
+
+save_state() {
+  echo "=== saving AVD state to GitHub Release ===" >> /tmp/full-script.log
+  tar czf /tmp/avd-state.tar.gz -C ~/.android/avd persistent_avd.avd persistent_avd.ini 2>>/tmp/full-script.log
+  gh release upload avd-state /tmp/avd-state.tar.gz --clobber >> /tmp/full-script.log 2>&1 || \
+    gh release create avd-state /tmp/avd-state.tar.gz --title "AVD persistent state" --notes "auto-managed, do not edit" >> /tmp/full-script.log 2>&1
+  echo "save_state done at $(date -u)" >> /tmp/full-script.log
+}
+
 echo "=== confirm emulator is up ===" >> /tmp/full-script.log
 adb devices -l >> /tmp/full-script.log 2>&1 || true
 
@@ -47,8 +56,24 @@ git commit -m "checkpoint 2 (post-tunnel) for run ${RUN_ID}" || true
 git pull --rebase origin main -q || true
 git push || true
 
-echo "=== keeping session alive for up to ~4.5 hours ==="
-for i in $(seq 1 270); do
+echo "=== keeping session alive for ~345 minutes (5h45m), saving state every 20 min ==="
+for i in $(seq 1 345); do
   sleep 60
-  echo "alive minute $i/270"
+  if [ $((i % 20)) -eq 0 ]; then
+    save_state
+    cp /tmp/full-script.log logs/full-script-latest.txt
+    git add logs/full-script-latest.txt
+    git commit -m "periodic checkpoint minute $i for run ${RUN_ID}" || true
+    git pull --rebase origin main -q || true
+    git push || true
+  fi
+  echo "alive minute $i/345"
 done
+
+echo "=== final state save before session ends ==="
+save_state
+cp /tmp/full-script.log logs/full-script-latest.txt
+git add logs/full-script-latest.txt
+git commit -m "final checkpoint for run ${RUN_ID}" || true
+git pull --rebase origin main -q || true
+git push || true
