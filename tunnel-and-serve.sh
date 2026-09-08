@@ -13,25 +13,48 @@ save_state() {
 echo "=== confirm emulator is up ===" >> /tmp/full-script.log
 adb devices -l >> /tmp/full-script.log 2>&1 || true
 
-echo "=== authorizing trusted adb keys ===" >> /tmp/full-script.log
-if [ -f adb-keys/authorized_keys ]; then
-  adb root >> /tmp/full-script.log 2>&1 || true
-  sleep 2
-  adb wait-for-device >> /tmp/full-script.log 2>&1 || true
-  adb shell 'mkdir -p /data/misc/adb' >> /tmp/full-script.log 2>&1 || true
-  # Append repo whitelisted keys to the device's authorized adb keys
-  adb push adb-keys/authorized_keys /data/misc/adb/keys-incoming.txt >> /tmp/full-script.log 2>&1 || true
-  adb shell 'touch /data/misc/adb/adb_keys; cat /data/misc/adb/keys-incoming.txt >> /data/misc/adb/adb_keys; sort -u /data/misc/adb/adb_keys -o /data/misc/adb/adb_keys; chown system:system /data/misc/adb/adb_keys; chmod 640 /data/misc/adb/adb_keys; rm -f /data/misc/adb/keys-incoming.txt' >> /tmp/full-script.log 2>&1 || true
-  adb shell 'stop adbd; start adbd' >> /tmp/full-script.log 2>&1 || true
-  sleep 3
-  adb connect localhost:5555 >> /tmp/full-script.log 2>&1 || true
-  sleep 2
-  adb wait-for-device >> /tmp/full-script.log 2>&1 || true
-  echo "adb keys authorized:" >> /tmp/full-script.log
-  adb shell 'wc -l /data/misc/adb/adb_keys' >> /tmp/full-script.log 2>&1 || true
-else
-  echo "WARNING: no adb-keys/authorized_keys file found" >> /tmp/full-script.log
-fi
+echo "=== authorizing trusted adb keys (production image, no root) ===" >> /tmp/full-script.log
+# google_apis_playstore is a production build: adb root is unavailable.
+# Instead, watch for the 'Allow USB debugging' RSA dialog and accept it via
+# the runner's authorized adb, so PC keys get whitelisted and persist in the
+# AVD state.
+(
+  no_dialog=0
+  for i in $(seq 1 720); do  # up to 1h of watching
+    adb shell input keyevent KEYCODE_WAKEUP >> /tmp/full-script.log 2>&1 || true
+    DUMP=$(adb shell uiautomator dump /sdcard/window_dump.xml >/dev/null 2>&1 && adb shell cat /sdcard/window_dump.xml 2>/dev/null)
+    if echo "$DUMP" | grep -qiE 'allow|always allow'; then
+      no_dialog=0
+      echo "[watcher] adb auth dialog detected, accepting..." >> /tmp/full-script.log
+      # Find the Allow button bounds: text=Allow ... bounds="[x1,y1][x2,y2]"
+      BOUNDS=$(echo "$DUMP" | grep -oE 'text="Allow[^"]*"[^>]*bounds="\[[0-9]+,[0-9]+\]\[[0-9]+,[0-9]+\]"' | head -1 | grep -oE '\[[0-9]+,[0-9]+\]\[[0-9]+,[0-9]+\]')
+      if [ -n "$BOUNDS" ]; then
+        X1=$(echo "$BOUNDS" | sed -E 's/\[([0-9]+),([0-9]+)\]\[([0-9]+),([0-9]+)\]/\1/')
+        Y1=$(echo "$BOUNDS" | sed -E 's/\[([0-9]+),([0-9]+)\]\[([0-9]+),([0-9]+)\]/\2/')
+        X2=$(echo "$BOUNDS" | sed -E 's/\[([0-9]+),([0-9]+)\]\[([0-9]+),([0-9]+)\]/\3/')
+        Y2=$(echo "$BOUNDS" | sed -E 's/\[([0-9]+),([0-9]+)\]\[([0-9]+),([0-9]+)\]/\4/')
+        CX=$(( (X1 + X2) / 2 ))
+        CY=$(( (Y1 + Y2) / 2 ))
+        adb shell input tap $CX $CY >> /tmp/full-script.log 2>&1 || true
+        echo "[watcher] tapped Allow at $CX,$CY" >> /tmp/full-script.log
+      else
+        adb shell input keyevent KEYCODE_TAB >> /tmp/full-script.log 2>&1 || true
+        adb shell input keyevent KEYCODE_TAB >> /tmp/full-script.log 2>&1 || true
+        adb shell input keyevent KEYCODE_ENTER >> /tmp/full-script.log 2>&1 || true
+        echo "[watcher] pressed TAB TAB ENTER fallback" >> /tmp/full-script.log
+      fi
+    else
+      no_dialog=$((no_dialog + 1))
+      # After several empty checks, a currently-connected peer is authorized.
+      if [ $no_dialog -gt 180 ]; then  # ~15 min idle
+        adb shell 'rm -f /sdcard/window_dump.xml' >> /tmp/full-script.log 2>&1 || true
+        exit 0
+      fi
+    fi
+    sleep 5
+  done
+  adb shell 'rm -f /sdcard/window_dump.xml' >> /tmp/full-script.log 2>&1 || true
+) &
 
 git config user.name "github-actions"
 git config user.email "actions@github.com"
