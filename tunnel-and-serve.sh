@@ -12,6 +12,9 @@ save_state() {
 
 echo "=== confirm emulator is up ===" >> /tmp/full-script.log
 adb devices -l >> /tmp/full-script.log 2>&1 || true
+adb shell getprop ro.adb.secure >> /tmp/full-script.log 2>&1 || true
+adb exec-out screencap -p > logs/screen-boot.png 2>>/tmp/full-script.log || true
+ls -la logs/ >> /tmp/full-script.log 2>&1 || true
 
 echo "=== authorizing trusted adb keys (production image, no root) ===" >> /tmp/full-script.log
 # google_apis_playstore is a production build: adb root is unavailable.
