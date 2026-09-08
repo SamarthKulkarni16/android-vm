@@ -2,40 +2,4 @@
 List of devices attached
 emulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emulator64_x86_64_arm64 transport_id:1
 
-=== authorizing trusted adb keys ===
-adbd cannot run as root in production builds
-adb-keys/authorized_keys: 1 file pushed, 0 skipped. 8.9 MB/s (953 bytes in 0.000s)
-adb: error: failed to copy 'adb-keys/authorized_keys' to '/data/misc/adb/keys-incoming.txt': remote couldn't create file: Permission denied
-touch: '/data/misc/adb/adb_keys': Permission denied
-/system/bin/sh: can't create /data/misc/adb/adb_keys: Permission denied
-sort: /data/misc/adb/adb_keys: Permission denied
-sort: /data/misc/adb/adb_keys: Permission denied
-chown: /data/misc/adb/adb_keys: Permission denied
-chmod: /data/misc/adb/adb_keys: Permission denied
-rm: /data/misc/adb/keys-incoming.txt: Permission denied
-Must be root
-Must be root
-connected to localhost:5555
-adb keys authorized:
-wc: /data/misc/adb/adb_keys: Permission denied
-=== opening ngrok tcp tunnel ===
-got address on attempt 1
-ADDR is: tcp://6.tcp.us-cal-1.ngrok.io:10995
-=== ngrok's own log ===
-t=2026-09-08T03:26:02+0000 lvl=info msg="no configuration paths supplied"
-t=2026-09-08T03:26:02+0000 lvl=info msg="using configuration at default config path" path=/home/runner/.config/ngrok/ngrok.yml
-t=2026-09-08T03:26:02+0000 lvl=info msg="open config file" path=/home/runner/.config/ngrok/ngrok.yml err=<nil>
-t=2026-09-08T03:26:02+0000 lvl=info msg="FIPS 140 mode" enabled=false
-t=2026-09-08T03:26:02+0000 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
-t=2026-09-08T03:26:03+0000 lvl=info msg="client session established" obj=tunnels.session
-t=2026-09-08T03:26:03+0000 lvl=info msg="tunnel session started" obj=tunnels.session
-t=2026-09-08T03:26:03+0000 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=//localhost:5555 url=tcp://6.tcp.us-cal-1.ngrok.io:10995
-t=2026-09-08T03:26:08+0000 lvl=info msg=start pg=/api/tunnels id=61c4bc9ab8c190a1
-t=2026-09-08T03:26:08+0000 lvl=info msg=end pg=/api/tunnels id=61c4bc9ab8c190a1 status=200 dur=310.899µs
-adb connect 6.tcp.us-cal-1.ngrok.io:10995
-=== committing connect address to repo ===
-[main 22daf51] connect address for run 34183376127
- 1 file changed, 3 insertions(+), 3 deletions(-)
-To https://github.com/SamarthKulkarni16/android-vm
-   f909767..22daf51  main -> main
-commit step done
+=== authorizing trusted adb keys (production image, no root) ===
