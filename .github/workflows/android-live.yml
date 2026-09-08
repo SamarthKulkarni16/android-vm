@@ -67,6 +67,5 @@ jobs:
           avd-name: persistent_avd
           force-avd-creation: false
           disable-animations: true
-          emulator-options: -prop ro.adb.secure=0
           emulator-boot-timeout: 600
           script: RUN_ID=${{ github.run_id }} GH_TOKEN=${{ github.token }} bash tunnel-and-serve.sh
