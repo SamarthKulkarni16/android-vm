@@ -64,3 +64,9 @@ HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/
 size must be less than 2147483648
 a release with the same tag name already exists: avd-state
 save_state done at Fri Sep 11 03:12:43 UTC 2026
+=== saving AVD state to GitHub Release ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
+size must be less than 2147483648
+a release with the same tag name already exists: avd-state
+save_state done at Fri Sep 11 03:34:19 UTC 2026
