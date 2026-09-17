@@ -34,3 +34,6 @@ adb connect 8.tcp.us-cal-1.ngrok.io:16475
 To https://github.com/SamarthKulkarni16/android-vm
    a651b33..cff727b  main -> main
 commit step done
+=== saving AVD state to GitHub Release ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+save_state done at Thu Sep 17 10:41:38 UTC 2026
