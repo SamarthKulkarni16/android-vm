@@ -1,3 +1,3 @@
-adb connect 8.tcp.ngrok.io:12027
-run_id: 35332260308
-generated: Fri Sep 18 10:00:23 UTC 2026
+adb connect 8.tcp.us-cal-1.ngrok.io:16475
+run_id: 35412309899
+generated: Sat Sep 19 01:23:02 UTC 2026
