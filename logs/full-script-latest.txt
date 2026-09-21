@@ -3,76 +3,13 @@ List of devices attached
 emulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emulator64_x86_64_arm64 transport_id:1
 
 1
-total 132
-drwxr-xr-x 2 runner runner  4096 Sep 20 09:59 .
-drwxr-xr-x 6 runner runner  4096 Sep 20 09:56 ..
--rw-r--r-- 1 runner runner    93 Sep 20 09:56 connect-now.txt
--rw-r--r-- 1 runner runner  4416 Sep 20 09:56 full-script-latest.txt
--rw-r--r-- 1 runner runner   214 Sep 20 09:56 last-run.txt
--rw-r--r-- 1 runner runner  1514 Sep 20 09:56 local-verify-latest.txt
--rw-r--r-- 1 runner runner   198 Sep 20 09:56 minimal-test-latest.txt
--rw-r--r-- 1 runner runner 98941 Sep 20 09:59 screen-boot.png
+total 104
+drwxr-xr-x 2 runner runner  4096 Sep 21 01:20 .
+drwxr-xr-x 6 runner runner  4096 Sep 21 01:17 ..
+-rw-r--r-- 1 runner runner   102 Sep 21 01:17 connect-now.txt
+-rw-r--r-- 1 runner runner  4443 Sep 21 01:17 full-script-latest.txt
+-rw-r--r-- 1 runner runner   214 Sep 21 01:17 last-run.txt
+-rw-r--r-- 1 runner runner  1514 Sep 21 01:17 local-verify-latest.txt
+-rw-r--r-- 1 runner runner   198 Sep 21 01:17 minimal-test-latest.txt
+-rw-r--r-- 1 runner runner 71011 Sep 21 01:20 screen-boot.png
 === authorizing trusted adb keys (production image, no root) ===
-=== opening ngrok tcp tunnel ===
-got address on attempt 1
-ADDR is: tcp://6.tcp.us-cal-1.ngrok.io:10995
-=== ngrok's own log ===
-t=2026-09-20T10:00:00+0000 lvl=info msg="no configuration paths supplied"
-t=2026-09-20T10:00:00+0000 lvl=info msg="using configuration at default config path" path=/home/runner/.config/ngrok/ngrok.yml
-t=2026-09-20T10:00:00+0000 lvl=info msg="open config file" path=/home/runner/.config/ngrok/ngrok.yml err=<nil>
-t=2026-09-20T10:00:00+0000 lvl=info msg="FIPS 140 mode" enabled=false
-t=2026-09-20T10:00:00+0000 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
-t=2026-09-20T10:00:00+0000 lvl=info msg="client session established" obj=tunnels.session
-t=2026-09-20T10:00:00+0000 lvl=info msg="tunnel session started" obj=tunnels.session
-t=2026-09-20T10:00:01+0000 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=//localhost:5555 url=tcp://6.tcp.us-cal-1.ngrok.io:10995
-t=2026-09-20T10:00:06+0000 lvl=info msg=start pg=/api/tunnels id=d2780364351e884f
-t=2026-09-20T10:00:06+0000 lvl=info msg=end pg=/api/tunnels id=d2780364351e884f status=200 dur=755.773µs
-adb connect 6.tcp.us-cal-1.ngrok.io:10995
-=== committing connect address to repo ===
-[main f513884] connect address for run 35503676742
- 1 file changed, 3 insertions(+), 3 deletions(-)
-To https://github.com/SamarthKulkarni16/android-vm
-   444054e..f513884  main -> main
-commit step done
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-save_state done at Sun Sep 20 10:22:41 UTC 2026
-=== saving AVD state to GitHub Release ===
-save_state done at Sun Sep 20 10:45:07 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-save_state done at Sun Sep 20 11:07:44 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-save_state done at Sun Sep 20 11:30:18 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-save_state done at Sun Sep 20 11:53:00 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-save_state done at Sun Sep 20 12:15:30 UTC 2026
-=== saving AVD state to GitHub Release ===
-save_state done at Sun Sep 20 12:38:25 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-save_state done at Sun Sep 20 13:01:07 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-save_state done at Sun Sep 20 13:23:42 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-save_state done at Sun Sep 20 13:46:24 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-save_state done at Sun Sep 20 14:09:04 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-save_state done at Sun Sep 20 14:31:30 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-save_state done at Sun Sep 20 14:54:11 UTC 2026
-=== saving AVD state to GitHub Release ===
-save_state done at Sun Sep 20 15:16:45 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-save_state done at Sun Sep 20 15:39:37 UTC 2026
