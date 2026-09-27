@@ -13,3 +13,24 @@ drwxr-xr-x 6 runner runner  4096 Sep 27 01:35 ..
 -rw-r--r-- 1 runner runner   198 Sep 27 01:35 minimal-test-latest.txt
 -rw-r--r-- 1 runner runner 99026 Sep 27 01:38 screen-boot.png
 === authorizing trusted adb keys (production image, no root) ===
+=== opening ngrok tcp tunnel ===
+got address on attempt 1
+ADDR is: tcp://8.tcp.ngrok.io:18671
+=== ngrok's own log ===
+t=2026-09-27T01:38:42+0000 lvl=info msg="no configuration paths supplied"
+t=2026-09-27T01:38:42+0000 lvl=info msg="using configuration at default config path" path=/home/runner/.config/ngrok/ngrok.yml
+t=2026-09-27T01:38:42+0000 lvl=info msg="open config file" path=/home/runner/.config/ngrok/ngrok.yml err=<nil>
+t=2026-09-27T01:38:42+0000 lvl=info msg="FIPS 140 mode" enabled=false
+t=2026-09-27T01:38:42+0000 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
+t=2026-09-27T01:38:42+0000 lvl=info msg="client session established" obj=tunnels.session
+t=2026-09-27T01:38:42+0000 lvl=info msg="tunnel session started" obj=tunnels.session
+t=2026-09-27T01:38:42+0000 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=//localhost:5555 url=tcp://8.tcp.ngrok.io:18671
+t=2026-09-27T01:38:48+0000 lvl=info msg=start pg=/api/tunnels id=e4f9b17b43b3942d
+t=2026-09-27T01:38:48+0000 lvl=info msg=end pg=/api/tunnels id=e4f9b17b43b3942d status=200 dur=239.036µs
+adb connect 8.tcp.ngrok.io:18671
+=== committing connect address to repo ===
+[main 8b3e0ab] connect address for run 36286012526
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+To https://github.com/SamarthKulkarni16/android-vm
+   0d82c42..8b3e0ab  main -> main
+commit step done
