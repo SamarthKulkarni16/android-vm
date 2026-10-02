@@ -66,3 +66,6 @@ tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
 save_state done at Fri Oct  2 15:23:02 UTC 2026
 === saving AVD state to GitHub Release ===
 save_state done at Fri Oct  2 15:45:43 UTC 2026
+=== saving AVD state to GitHub Release ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+save_state done at Fri Oct  2 16:07:56 UTC 2026
