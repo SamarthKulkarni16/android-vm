@@ -68,3 +68,6 @@ save_state done at Mon Oct 12 06:19:24 UTC 2026
 save_state done at Mon Oct 12 06:41:51 UTC 2026
 === saving AVD state to GitHub Release ===
 save_state done at Mon Oct 12 07:04:06 UTC 2026
+=== saving AVD state to GitHub Release ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+save_state done at Mon Oct 12 07:26:49 UTC 2026
