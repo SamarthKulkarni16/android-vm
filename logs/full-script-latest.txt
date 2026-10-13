@@ -4,120 +4,12 @@ emulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86
 
 1
 total 132
-drwxr-xr-x 2 runner runner  4096 Oct 12 13:25 .
-drwxr-xr-x 6 runner runner  4096 Oct 12 13:23 ..
--rw-r--r-- 1 runner runner    93 Oct 12 13:23 connect-now.txt
--rw-r--r-- 1 runner runner  4492 Oct 12 13:23 full-script-latest.txt
--rw-r--r-- 1 runner runner   214 Oct 12 13:23 last-run.txt
--rw-r--r-- 1 runner runner  1514 Oct 12 13:23 local-verify-latest.txt
--rw-r--r-- 1 runner runner   198 Oct 12 13:23 minimal-test-latest.txt
--rw-r--r-- 1 runner runner 98933 Oct 12 13:25 screen-boot.png
+drwxr-xr-x 2 runner runner  4096 Oct 13 03:43 .
+drwxr-xr-x 6 runner runner  4096 Oct 13 03:41 ..
+-rw-r--r-- 1 runner runner    93 Oct 13 03:41 connect-now.txt
+-rw-r--r-- 1 runner runner  8016 Oct 13 03:41 full-script-latest.txt
+-rw-r--r-- 1 runner runner   214 Oct 13 03:41 last-run.txt
+-rw-r--r-- 1 runner runner  1514 Oct 13 03:41 local-verify-latest.txt
+-rw-r--r-- 1 runner runner   198 Oct 13 03:41 minimal-test-latest.txt
+-rw-r--r-- 1 runner runner 99408 Oct 13 03:43 screen-boot.png
 === authorizing trusted adb keys (production image, no root) ===
-=== opening ngrok tcp tunnel ===
-got address on attempt 1
-ADDR is: tcp://6.tcp.ngrok.io:27919
-=== ngrok's own log ===
-t=2026-10-12T13:25:51+0000 lvl=info msg="no configuration paths supplied"
-t=2026-10-12T13:25:51+0000 lvl=info msg="using configuration at default config path" path=/home/runner/.config/ngrok/ngrok.yml
-t=2026-10-12T13:25:51+0000 lvl=info msg="open config file" path=/home/runner/.config/ngrok/ngrok.yml err=<nil>
-t=2026-10-12T13:25:51+0000 lvl=info msg="FIPS 140 mode" enabled=false
-t=2026-10-12T13:25:51+0000 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
-t=2026-10-12T13:25:52+0000 lvl=info msg="client session established" obj=tunnels.session
-t=2026-10-12T13:25:52+0000 lvl=info msg="tunnel session started" obj=tunnels.session
-t=2026-10-12T13:25:52+0000 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=//localhost:5555 url=tcp://6.tcp.ngrok.io:27919
-t=2026-10-12T13:25:57+0000 lvl=info msg=start pg=/api/tunnels id=536eb0f41ce21583
-t=2026-10-12T13:25:57+0000 lvl=info msg=end pg=/api/tunnels id=536eb0f41ce21583 status=200 dur=214.484µs
-adb connect 6.tcp.ngrok.io:27919
-=== committing connect address to repo ===
-[main 286246e] connect address for run 38255311871
- 1 file changed, 3 insertions(+), 3 deletions(-)
-To https://github.com/SamarthKulkarni16/android-vm
-   cb0428f..286246e  main -> main
-commit step done
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
-size must be less than 2147483648
-a release with the same tag name already exists: avd-state
-save_state done at Mon Oct 12 13:48:15 UTC 2026
-=== saving AVD state to GitHub Release ===
-HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
-size must be less than 2147483648
-a release with the same tag name already exists: avd-state
-save_state done at Mon Oct 12 14:10:35 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
-size must be less than 2147483648
-a release with the same tag name already exists: avd-state
-save_state done at Mon Oct 12 14:32:59 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
-size must be less than 2147483648
-a release with the same tag name already exists: avd-state
-save_state done at Mon Oct 12 14:55:19 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
-size must be less than 2147483648
-a release with the same tag name already exists: avd-state
-save_state done at Mon Oct 12 15:17:43 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
-size must be less than 2147483648
-a release with the same tag name already exists: avd-state
-save_state done at Mon Oct 12 15:40:09 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
-size must be less than 2147483648
-a release with the same tag name already exists: avd-state
-save_state done at Mon Oct 12 16:02:33 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
-size must be less than 2147483648
-a release with the same tag name already exists: avd-state
-save_state done at Mon Oct 12 16:24:58 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
-size must be less than 2147483648
-a release with the same tag name already exists: avd-state
-save_state done at Mon Oct 12 16:47:22 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
-size must be less than 2147483648
-a release with the same tag name already exists: avd-state
-save_state done at Mon Oct 12 17:09:46 UTC 2026
-=== saving AVD state to GitHub Release ===
-HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
-size must be less than 2147483648
-a release with the same tag name already exists: avd-state
-save_state done at Mon Oct 12 17:32:10 UTC 2026
-=== saving AVD state to GitHub Release ===
-HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
-size must be less than 2147483648
-a release with the same tag name already exists: avd-state
-save_state done at Mon Oct 12 17:54:34 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
-size must be less than 2147483648
-a release with the same tag name already exists: avd-state
-save_state done at Mon Oct 12 18:16:58 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
-size must be less than 2147483648
-a release with the same tag name already exists: avd-state
-save_state done at Mon Oct 12 18:39:23 UTC 2026
-=== saving AVD state to GitHub Release ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-state.tar.gz)
-size must be less than 2147483648
-a release with the same tag name already exists: avd-state
-save_state done at Mon Oct 12 19:01:43 UTC 2026
