@@ -102,8 +102,8 @@ git commit -m "checkpoint 2 (post-tunnel) for run ${RUN_ID}" || true
 git pull --rebase origin main -q || true
 git push || true
 
-echo "=== keeping session alive for ~345 minutes (5h45m), saving state every 20 min ==="
-for i in $(seq 1 345); do
+echo "=== keeping session alive for ~295 minutes (4h55m), saving state every 20 min ==="
+for i in $(seq 1 295); do
   sleep 60
   if [ $((i % 20)) -eq 0 ]; then
     save_state
@@ -113,7 +113,7 @@ for i in $(seq 1 345); do
     git pull --rebase origin main -q || true
     git push || true
   fi
-  echo "alive minute $i/345"
+  echo "alive minute $i/295"
 done
 
 echo "=== final state save before session ends ==="
