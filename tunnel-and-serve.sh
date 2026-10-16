@@ -3,11 +3,27 @@ set -x
 mkdir -p logs
 
 save_state() {
-  echo "=== saving AVD state to GitHub Release ===" >> /tmp/full-script.log
-  tar czf /tmp/avd-state.tar.gz -C ~/.android/avd persistent_avd.avd persistent_avd.ini 2>>/tmp/full-script.log
-  gh release upload avd-state /tmp/avd-state.tar.gz --clobber >> /tmp/full-script.log 2>&1 || \
-    gh release create avd-state /tmp/avd-state.tar.gz --title "AVD persistent state" --notes "auto-managed, do not edit" >> /tmp/full-script.log 2>&1
-  echo "save_state done at $(date -u)" >> /tmp/full-script.log
+  GEN="G$(date -u +%Y%m%dT%H%M)"
+  D=/tmp/avdparts
+  echo "=== saving AVD state $GEN to GitHub Release in parts ===" >> /tmp/full-script.log
+  adb shell sync >> /tmp/full-script.log 2>&1 || true
+  rm -rf $D; mkdir -p $D
+  tar czf - -C ~/.android/avd persistent_avd.avd persistent_avd.ini 2>>/tmp/full-script.log | split -b 1800M -d -a 2 - $D/part-; TS=${PIPESTATUS[0]}
+  N=$(ls $D | wc -l)
+  if [ "$TS" -gt 1 ] || [ "$N" -lt 1 ]; then echo "save FAILED (tar exit $TS, parts $N), old state kept" >> /tmp/full-script.log; rm -rf $D; return; fi
+  i=0
+  for f in $(ls $D | sort); do i=$((i+1)); mv "$D/$f" "$D/avd-$GEN-p${i}of${N}"; done
+  ls -l $D >> /tmp/full-script.log
+  gh release view avd-state >/dev/null 2>&1 || gh release create avd-state --title "AVD persistent state" --notes "auto-managed, do not edit" >> /tmp/full-script.log 2>&1
+  if gh release upload avd-state $D/avd-$GEN-p* >> /tmp/full-script.log 2>&1; then
+    for a in $(gh release view avd-state --json assets --jq '.assets[].name'); do
+      case "$a" in avd-$GEN-p*) ;; *) gh release delete-asset avd-state "$a" -y >> /tmp/full-script.log 2>&1 ;; esac
+    done
+    echo "save ok $GEN at $(date -u)" >> /tmp/full-script.log
+  else
+    echo "UPLOAD FAILED, old state kept" >> /tmp/full-script.log
+  fi
+  rm -rf $D
 }
 
 echo "=== confirm emulator is up ===" >> /tmp/full-script.log
@@ -116,7 +132,9 @@ for i in $(seq 1 295); do
   echo "alive minute $i/295"
 done
 
-echo "=== final state save before session ends ==="
+echo "=== final state save before session ends (stop emulator first so the disk is consistent) ==="
+adb emu kill >> /tmp/full-script.log 2>&1 || true
+sleep 25
 save_state
 cp /tmp/full-script.log logs/full-script-latest.txt
 git add logs/full-script-latest.txt
