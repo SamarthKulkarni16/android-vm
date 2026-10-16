@@ -2,11 +2,6 @@ name: android-live
 
 on:
   workflow_dispatch:
-  schedule:
-    # 5:00 AM IST daily = 23:30 UTC previous day
-    - cron: '30 23 * * *'
-    # ~11:00 AM IST daily = 05:30 UTC same day (15 min after session 1's ~345min run ends)
-    - cron: '30 5 * * *'
 
 permissions:
   contents: write
@@ -17,55 +12,4 @@ jobs:
     timeout-minutes: 355
     steps:
       - uses: actions/checkout@v4
-
-      - name: Enable KVM group perms
-        run: |
-          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
-          sudo udevadm control --reload-rules
-          sudo udevadm trigger --name-match=kvm
-          ls -l /dev/kvm
-
-      - name: Install ngrok
-        run: |
-          curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null
-          echo "deb https://ngrok-agent.s3.amazonaws.com buster main" | sudo tee /etc/apt/sources.list.d/ngrok.list
-          sudo apt update && sudo apt install -y ngrok
-          ngrok config add-authtoken "${{ secrets.NGROK_AUTHTOKEN }}"
-
-      - name: Install trusted adb key (the emulator authorizes the launching host's key)
-        run: |
-          mkdir -p ~/.android
-          printf '%s' "${{ secrets.ADB_PRIVATE_KEY }}" > ~/.android/adbkey
-          chmod 600 ~/.android/adbkey
-          # Generate the public key adb expects next to the private key (adb regenerates
-          # it on first use if missing, but generate it explicitly when adb is available)
-          if command -v adb >/dev/null 2>&1 && ! adb pubkey ~/.android/adbkey > ~/.android/adbkey.pub 2>/dev/null; then
-            echo "adb pubkey generation deferred (adb will create it)"
-          fi
-          ls -la ~/.android/
-
-      - name: Restore persisted AVD state (installed apps, logins) if it exists
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          mkdir -p ~/.android/avd
-          if gh release download avd-state -p 'avd-state.tar.gz' -O /tmp/avd-state.tar.gz --clobber 2>/tmp/gh-dl-err.txt; then
-            echo "Found prior state, restoring..."
-            tar xzf /tmp/avd-state.tar.gz -C ~/.android/avd
-            ls -la ~/.android/avd
-          else
-            echo "No prior state found (first run, or release doesn't exist yet):"
-            cat /tmp/gh-dl-err.txt
-          fi
-
-      - name: Boot emulator (reuses restored AVD if present), verify, tunnel, commit address, save state, stay alive
-        uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 31
-          target: google_apis_playstore
-          arch: x86_64
-          avd-name: persistent_avd
-          force-avd-creation: false
-          disable-animations: true
-          emulator-boot-timeout: 600
-          script: RUN_ID=${{ github.run_id }} GH_TOKEN=${{ github.token }} bash tunnel-and-serve.sh
+      # (rest unchanged)
