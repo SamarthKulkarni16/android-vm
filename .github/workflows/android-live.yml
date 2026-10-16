@@ -40,16 +40,7 @@ jobs:
       - name: Restore persisted AVD state (installed apps, logins) if it exists
         env:
           GH_TOKEN: ${{ github.token }}
-        run: |
-          mkdir -p ~/.android/avd
-          if gh release download avd-state -p 'avd-state.tar.gz' -O /tmp/avd-state.tar.gz --clobber 2>/tmp/gh-dl-err.txt; then
-            echo "Found prior state, restoring..."
-            tar xzf /tmp/avd-state.tar.gz -C ~/.android/avd
-            ls -la ~/.android/avd
-          else
-            echo "No prior state found (first run, or release doesn't exist yet):"
-            cat /tmp/gh-dl-err.txt
-          fi
+        run: bash restore-avd.sh
 
       - name: Boot emulator (reuses restored AVD if present), verify, tunnel, commit address, save state, stay alive
         uses: reactivecircus/android-emulator-runner@v2
