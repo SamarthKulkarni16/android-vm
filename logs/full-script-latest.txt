@@ -34,3 +34,10 @@ adb connect 8.tcp.us-cal-1.ngrok.io:21410
 To https://github.com/SamarthKulkarni16/android-vm
    d921df5..ebeddc3  main -> main
 commit step done
+=== saving AVD state G20261020T1034 to GitHub Release in parts ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 5494604
+-rw-r--r-- 1 runner runner 1887436800 Oct 20 10:35 avd-G20261020T1034-p1of3
+-rw-r--r-- 1 runner runner 1887436800 Oct 20 10:36 avd-G20261020T1034-p2of3
+-rw-r--r-- 1 runner runner 1851587810 Oct 20 10:37 avd-G20261020T1034-p3of3
+save ok G20261020T1034 at Tue Oct 20 10:39:48 UTC 2026
