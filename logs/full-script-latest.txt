@@ -106,3 +106,10 @@ total 5496616
 HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-G20261020T1418-p1of3)
 ReleaseAsset.name already exists
 UPLOAD FAILED, old state kept
+=== saving AVD state G20261020T1444 to GitHub Release in parts ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 5496456
+-rw-r--r-- 1 runner runner 1887436800 Oct 20 14:45 avd-G20261020T1444-p1of3
+-rw-r--r-- 1 runner runner 1887436800 Oct 20 14:46 avd-G20261020T1444-p2of3
+-rw-r--r-- 1 runner runner 1853482789 Oct 20 14:47 avd-G20261020T1444-p3of3
+save ok G20261020T1444 at Tue Oct 20 14:49:20 UTC 2026
