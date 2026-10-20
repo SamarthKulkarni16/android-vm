@@ -3,34 +3,13 @@ List of devices attached
 emulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emulator64_x86_64_arm64 transport_id:1
 
 1
-total 124
-drwxr-xr-x 2 runner runner  4096 Oct 16 01:40 .
-drwxr-xr-x 6 runner runner  4096 Oct 16 01:36 ..
--rw-r--r-- 1 runner runner    93 Oct 16 01:36 connect-now.txt
--rw-r--r-- 1 runner runner  4568 Oct 16 01:36 full-script-latest.txt
--rw-r--r-- 1 runner runner   214 Oct 16 01:36 last-run.txt
--rw-r--r-- 1 runner runner  1514 Oct 16 01:36 local-verify-latest.txt
--rw-r--r-- 1 runner runner   198 Oct 16 01:36 minimal-test-latest.txt
--rw-r--r-- 1 runner runner 92521 Oct 16 01:40 screen-boot.png
+total 120
+drwxr-xr-x 2 runner runner  4096 Oct 20 03:43 .
+drwxr-xr-x 6 runner runner  4096 Oct 20 03:40 ..
+-rw-r--r-- 1 runner runner    93 Oct 20 03:40 connect-now.txt
+-rw-r--r-- 1 runner runner  2139 Oct 20 03:40 full-script-latest.txt
+-rw-r--r-- 1 runner runner   214 Oct 20 03:40 last-run.txt
+-rw-r--r-- 1 runner runner  1514 Oct 20 03:40 local-verify-latest.txt
+-rw-r--r-- 1 runner runner   198 Oct 20 03:40 minimal-test-latest.txt
+-rw-r--r-- 1 runner runner 92891 Oct 20 03:43 screen-boot.png
 === authorizing trusted adb keys (production image, no root) ===
-=== opening ngrok tcp tunnel ===
-got address on attempt 1
-ADDR is: tcp://0.tcp.ngrok.io:22820
-=== ngrok's own log ===
-t=2026-10-16T01:40:29+0000 lvl=info msg="no configuration paths supplied"
-t=2026-10-16T01:40:29+0000 lvl=info msg="using configuration at default config path" path=/home/runner/.config/ngrok/ngrok.yml
-t=2026-10-16T01:40:29+0000 lvl=info msg="open config file" path=/home/runner/.config/ngrok/ngrok.yml err=<nil>
-t=2026-10-16T01:40:29+0000 lvl=info msg="FIPS 140 mode" enabled=false
-t=2026-10-16T01:40:29+0000 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
-t=2026-10-16T01:40:29+0000 lvl=info msg="client session established" obj=tunnels.session
-t=2026-10-16T01:40:29+0000 lvl=info msg="tunnel session started" obj=tunnels.session
-t=2026-10-16T01:40:29+0000 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=//localhost:5555 url=tcp://0.tcp.ngrok.io:22820
-t=2026-10-16T01:40:35+0000 lvl=info msg=start pg=/api/tunnels id=e0019413aba998b6
-t=2026-10-16T01:40:35+0000 lvl=info msg=end pg=/api/tunnels id=e0019413aba998b6 status=200 dur=248.194µs
-adb connect 0.tcp.ngrok.io:22820
-=== committing connect address to repo ===
-[main 06244dc] connect address for run 38836040436
- 1 file changed, 3 insertions(+), 3 deletions(-)
-To https://github.com/SamarthKulkarni16/android-vm
-   f4d360b..06244dc  main -> main
-commit step done
