@@ -97,3 +97,12 @@ total 5496908
 -rw-r--r-- 1 runner runner 1887436800 Oct 20 13:55 avd-G20261020T1354-p2of3
 -rw-r--r-- 1 runner runner 1853946587 Oct 20 13:57 avd-G20261020T1354-p3of3
 save ok G20261020T1354 at Tue Oct 20 13:58:53 UTC 2026
+=== saving AVD state G20261020T1418 to GitHub Release in parts ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 5496616
+-rw-r--r-- 1 runner runner 1887436800 Oct 20 14:19 avd-G20261020T1418-p1of3
+-rw-r--r-- 1 runner runner 1887436800 Oct 20 14:20 avd-G20261020T1418-p2of3
+-rw-r--r-- 1 runner runner 1853646668 Oct 20 14:22 avd-G20261020T1418-p3of3
+HTTP 422: Validation Failed (https://uploads.github.com/repos/SamarthKulkarni16/android-vm/releases/384442615/assets?label=&name=avd-G20261020T1418-p1of3)
+ReleaseAsset.name already exists
+UPLOAD FAILED, old state kept
