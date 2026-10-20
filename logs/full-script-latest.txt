@@ -113,3 +113,9 @@ total 5496456
 -rw-r--r-- 1 runner runner 1887436800 Oct 20 14:46 avd-G20261020T1444-p2of3
 -rw-r--r-- 1 runner runner 1853482789 Oct 20 14:47 avd-G20261020T1444-p3of3
 save ok G20261020T1444 at Tue Oct 20 14:49:20 UTC 2026
+=== saving AVD state G20261020T1509 to GitHub Release in parts ===
+total 5496440
+-rw-r--r-- 1 runner runner 1887436800 Oct 20 15:10 avd-G20261020T1509-p1of3
+-rw-r--r-- 1 runner runner 1887436800 Oct 20 15:11 avd-G20261020T1509-p2of3
+-rw-r--r-- 1 runner runner 1853467948 Oct 20 15:12 avd-G20261020T1509-p3of3
+save ok G20261020T1509 at Tue Oct 20 15:14:07 UTC 2026
