@@ -3,125 +3,13 @@ List of devices attached
 emulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emulator64_x86_64_arm64 transport_id:1
 
 1
-total 120
-drwxr-xr-x 2 runner runner  4096 Oct 20 03:43 .
-drwxr-xr-x 6 runner runner  4096 Oct 20 03:40 ..
--rw-r--r-- 1 runner runner    93 Oct 20 03:40 connect-now.txt
--rw-r--r-- 1 runner runner  2139 Oct 20 03:40 full-script-latest.txt
--rw-r--r-- 1 runner runner   214 Oct 20 03:40 last-run.txt
--rw-r--r-- 1 runner runner  1514 Oct 20 03:40 local-verify-latest.txt
--rw-r--r-- 1 runner runner   198 Oct 20 03:40 minimal-test-latest.txt
--rw-r--r-- 1 runner runner 92891 Oct 20 03:43 screen-boot.png
+total 128
+drwxr-xr-x 2 runner runner  4096 Oct 20 10:14 .
+drwxr-xr-x 6 runner runner  4096 Oct 20 10:11 ..
+-rw-r--r-- 1 runner runner    93 Oct 20 10:11 connect-now.txt
+-rw-r--r-- 1 runner runner  7859 Oct 20 10:11 full-script-latest.txt
+-rw-r--r-- 1 runner runner   214 Oct 20 10:11 last-run.txt
+-rw-r--r-- 1 runner runner  1514 Oct 20 10:11 local-verify-latest.txt
+-rw-r--r-- 1 runner runner   198 Oct 20 10:11 minimal-test-latest.txt
+-rw-r--r-- 1 runner runner 94220 Oct 20 10:14 screen-boot.png
 === authorizing trusted adb keys (production image, no root) ===
-=== opening ngrok tcp tunnel ===
-got address on attempt 1
-ADDR is: tcp://6.tcp.ngrok.io:10299
-=== ngrok's own log ===
-t=2026-10-20T03:43:05+0000 lvl=info msg="no configuration paths supplied"
-t=2026-10-20T03:43:05+0000 lvl=info msg="using configuration at default config path" path=/home/runner/.config/ngrok/ngrok.yml
-t=2026-10-20T03:43:05+0000 lvl=info msg="open config file" path=/home/runner/.config/ngrok/ngrok.yml err=<nil>
-t=2026-10-20T03:43:05+0000 lvl=info msg="FIPS 140 mode" enabled=false
-t=2026-10-20T03:43:05+0000 lvl=info msg="starting web service" obj=web addr=127.0.0.1:4040 allow_hosts=[]
-t=2026-10-20T03:43:05+0000 lvl=info msg="client session established" obj=tunnels.session
-t=2026-10-20T03:43:05+0000 lvl=info msg="tunnel session started" obj=tunnels.session
-t=2026-10-20T03:43:06+0000 lvl=info msg="started tunnel" obj=tunnels name=command_line addr=//localhost:5555 url=tcp://6.tcp.ngrok.io:10299
-t=2026-10-20T03:43:11+0000 lvl=info msg=start pg=/api/tunnels id=9abc56b0b598cc77
-t=2026-10-20T03:43:11+0000 lvl=info msg=end pg=/api/tunnels id=9abc56b0b598cc77 status=200 dur=227.757µs
-adb connect 6.tcp.ngrok.io:10299
-=== committing connect address to repo ===
-[main ed02318] connect address for run 39365480422
- 1 file changed, 3 insertions(+), 3 deletions(-)
-To https://github.com/SamarthKulkarni16/android-vm
-   1ed109f..ed02318  main -> main
-commit step done
-=== saving AVD state G20261020T0403 to GitHub Release in parts ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 4165544
--rw-r--r-- 1 runner runner 1887436800 Oct 20 04:04 avd-G20261020T0403-p1of3
--rw-r--r-- 1 runner runner 1887436800 Oct 20 04:04 avd-G20261020T0403-p2of3
--rw-r--r-- 1 runner runner  490630120 Oct 20 04:05 avd-G20261020T0403-p3of3
-save ok G20261020T0403 at Tue Oct 20 04:06:58 UTC 2026
-=== saving AVD state G20261020T0427 to GitHub Release in parts ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 4195752
--rw-r--r-- 1 runner runner 1887436800 Oct 20 04:27 avd-G20261020T0427-p1of3
--rw-r--r-- 1 runner runner 1887436800 Oct 20 04:28 avd-G20261020T0427-p2of3
--rw-r--r-- 1 runner runner  521560289 Oct 20 04:29 avd-G20261020T0427-p3of3
-save ok G20261020T0427 at Tue Oct 20 04:30:52 UTC 2026
-=== saving AVD state G20261020T0450 to GitHub Release in parts ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 4196056
--rw-r--r-- 1 runner runner 1887436800 Oct 20 04:51 avd-G20261020T0450-p1of3
--rw-r--r-- 1 runner runner 1887436800 Oct 20 04:52 avd-G20261020T0450-p2of3
--rw-r--r-- 1 runner runner  521875580 Oct 20 04:53 avd-G20261020T0450-p3of3
-save ok G20261020T0450 at Tue Oct 20 04:55:13 UTC 2026
-=== saving AVD state G20261020T0515 to GitHub Release in parts ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 4196112
--rw-r--r-- 1 runner runner 1887436800 Oct 20 05:16 avd-G20261020T0515-p1of3
--rw-r--r-- 1 runner runner 1887436800 Oct 20 05:16 avd-G20261020T0515-p2of3
--rw-r--r-- 1 runner runner  521936140 Oct 20 05:17 avd-G20261020T0515-p3of3
-save ok G20261020T0515 at Tue Oct 20 05:19:00 UTC 2026
-=== saving AVD state G20261020T0539 to GitHub Release in parts ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 4196104
--rw-r--r-- 1 runner runner 1887436800 Oct 20 05:39 avd-G20261020T0539-p1of3
--rw-r--r-- 1 runner runner 1887436800 Oct 20 05:40 avd-G20261020T0539-p2of3
--rw-r--r-- 1 runner runner  521928474 Oct 20 05:41 avd-G20261020T0539-p3of3
-save ok G20261020T0539 at Tue Oct 20 05:42:38 UTC 2026
-=== saving AVD state G20261020T0602 to GitHub Release in parts ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 4196160
--rw-r--r-- 1 runner runner 1887436800 Oct 20 06:03 avd-G20261020T0602-p1of3
--rw-r--r-- 1 runner runner 1887436800 Oct 20 06:04 avd-G20261020T0602-p2of3
--rw-r--r-- 1 runner runner  521984235 Oct 20 06:05 avd-G20261020T0602-p3of3
-save ok G20261020T0602 at Tue Oct 20 06:06:27 UTC 2026
-=== saving AVD state G20261020T0626 to GitHub Release in parts ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 4196012
--rw-r--r-- 1 runner runner 1887436800 Oct 20 06:27 avd-G20261020T0626-p1of3
--rw-r--r-- 1 runner runner 1887436800 Oct 20 06:28 avd-G20261020T0626-p2of3
--rw-r--r-- 1 runner runner  521832562 Oct 20 06:28 avd-G20261020T0626-p3of3
-save ok G20261020T0626 at Tue Oct 20 06:30:14 UTC 2026
-=== saving AVD state G20261020T0650 to GitHub Release in parts ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 4195820
--rw-r--r-- 1 runner runner 1887436800 Oct 20 06:51 avd-G20261020T0650-p1of3
--rw-r--r-- 1 runner runner 1887436800 Oct 20 06:51 avd-G20261020T0650-p2of3
--rw-r--r-- 1 runner runner  521636528 Oct 20 06:52 avd-G20261020T0650-p3of3
-save ok G20261020T0650 at Tue Oct 20 06:54:01 UTC 2026
-=== saving AVD state G20261020T0714 to GitHub Release in parts ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 4195732
--rw-r--r-- 1 runner runner 1887436800 Oct 20 07:14 avd-G20261020T0714-p1of3
--rw-r--r-- 1 runner runner 1887436800 Oct 20 07:15 avd-G20261020T0714-p2of3
--rw-r--r-- 1 runner runner  521546423 Oct 20 07:16 avd-G20261020T0714-p3of3
-save ok G20261020T0714 at Tue Oct 20 07:17:54 UTC 2026
-=== saving AVD state G20261020T0737 to GitHub Release in parts ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 4195700
--rw-r--r-- 1 runner runner 1887436800 Oct 20 07:38 avd-G20261020T0737-p1of3
--rw-r--r-- 1 runner runner 1887436800 Oct 20 07:39 avd-G20261020T0737-p2of3
--rw-r--r-- 1 runner runner  521514719 Oct 20 07:40 avd-G20261020T0737-p3of3
-save ok G20261020T0737 at Tue Oct 20 07:41:52 UTC 2026
-=== saving AVD state G20261020T0801 to GitHub Release in parts ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 5420944
--rw-r--r-- 1 runner runner 1887436800 Oct 20 08:02 avd-G20261020T0801-p1of3
--rw-r--r-- 1 runner runner 1887436800 Oct 20 08:03 avd-G20261020T0801-p2of3
--rw-r--r-- 1 runner runner 1776159970 Oct 20 08:04 avd-G20261020T0801-p3of3
-save ok G20261020T0801 at Tue Oct 20 08:06:24 UTC 2026
-=== saving AVD state G20261020T0826 to GitHub Release in parts ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 5476040
--rw-r--r-- 1 runner runner 1887436800 Oct 20 08:27 avd-G20261020T0826-p1of3
--rw-r--r-- 1 runner runner 1887436800 Oct 20 08:28 avd-G20261020T0826-p2of3
--rw-r--r-- 1 runner runner 1832576226 Oct 20 08:29 avd-G20261020T0826-p3of3
-save ok G20261020T0826 at Tue Oct 20 08:30:53 UTC 2026
-=== saving AVD state G20261020T0850 to GitHub Release in parts ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 5477568
--rw-r--r-- 1 runner runner 1887436800 Oct 20 08:51 avd-G20261020T0850-p1of3
--rw-r--r-- 1 runner runner 1887436800 Oct 20 08:52 avd-G20261020T0850-p2of3
--rw-r--r-- 1 runner runner 1834142203 Oct 20 08:53 avd-G20261020T0850-p3of3
-save ok G20261020T0850 at Tue Oct 20 08:55:11 UTC 2026
