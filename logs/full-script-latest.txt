@@ -55,3 +55,10 @@ total 4196056
 -rw-r--r-- 1 runner runner 1887436800 Oct 20 04:52 avd-G20261020T0450-p2of3
 -rw-r--r-- 1 runner runner  521875580 Oct 20 04:53 avd-G20261020T0450-p3of3
 save ok G20261020T0450 at Tue Oct 20 04:55:13 UTC 2026
+=== saving AVD state G20261020T0515 to GitHub Release in parts ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 4196112
+-rw-r--r-- 1 runner runner 1887436800 Oct 20 05:16 avd-G20261020T0515-p1of3
+-rw-r--r-- 1 runner runner 1887436800 Oct 20 05:16 avd-G20261020T0515-p2of3
+-rw-r--r-- 1 runner runner  521936140 Oct 20 05:17 avd-G20261020T0515-p3of3
+save ok G20261020T0515 at Tue Oct 20 05:19:00 UTC 2026
