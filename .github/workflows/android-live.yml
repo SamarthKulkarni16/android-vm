@@ -6,12 +6,30 @@ on:
 permissions:
   contents: write
 
+# one session at a time: a new session waits until the previous one has finished its final save
+concurrency:
+  group: android-live
+  cancel-in-progress: false
+
 jobs:
   live-emulator:
     runs-on: ubuntu-latest
     timeout-minutes: 330
     steps:
       - uses: actions/checkout@v4
+
+      - name: Record session start and mark it as booting (so nobody reads a stale address)
+        run: |
+          echo "SESSION_START=$(date +%s)" >> "$GITHUB_ENV"
+          mkdir -p logs
+          printf 'run_id: %s\nv: 2\nstate: booting\nupdated: %s\n' "$GITHUB_RUN_ID" "$(date -u +%FT%TZ)" > logs/session-state.txt
+          printf 'run_id: %s\nstate: booting\n' "$GITHUB_RUN_ID" > logs/connect-now.txt
+          git config user.name github-actions
+          git config user.email actions@github.com
+          git add logs
+          git commit -m "booting run $GITHUB_RUN_ID" || true
+          git pull --rebase origin main -q || true
+          git push || true
 
       - name: Enable KVM group perms
         run: |
@@ -37,13 +55,19 @@ jobs:
           fi
           ls -la ~/.android/
 
-      - name: Restore persisted AVD state (installed apps, logins) if it exists
+      - name: Restore the saved phone (encrypted state, newest good generation)
         env:
           GH_TOKEN: ${{ github.token }}
+          AVD_STATE_KEY: ${{ secrets.AVD_STATE_KEY }}
+          ADB_PRIVATE_KEY: ${{ secrets.ADB_PRIVATE_KEY }}
         run: bash restore-avd.sh
 
-      - name: Boot emulator (reuses restored AVD if present), verify, tunnel, commit address, save state, stay alive
+      - name: Boot the phone, tunnel, keep alive until 5 hours or the X button, then save cleanly
         uses: reactivecircus/android-emulator-runner@v2
+        env:
+          GH_TOKEN: ${{ github.token }}
+          AVD_STATE_KEY: ${{ secrets.AVD_STATE_KEY }}
+          ADB_PRIVATE_KEY: ${{ secrets.ADB_PRIVATE_KEY }}
         with:
           api-level: 31
           target: google_apis_playstore
@@ -52,4 +76,27 @@ jobs:
           force-avd-creation: false
           disable-animations: true
           emulator-boot-timeout: 600
-          script: RUN_ID=${{ github.run_id }} GH_TOKEN=${{ github.token }} bash tunnel-and-serve.sh
+          script: SESSION_START=${{ env.SESSION_START }} RUN_ID=${{ github.run_id }} bash tunnel-and-serve.sh
+
+      - name: Emergency save (only if the session did not finish its own clean save)
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          AVD_STATE_KEY: ${{ secrets.AVD_STATE_KEY }}
+          ADB_PRIVATE_KEY: ${{ secrets.ADB_PRIVATE_KEY }}
+        run: |
+          if [ ! -f /tmp/session-booted ]; then echo "session never booted, nothing to save"; exit 0; fi
+          if [ -f /tmp/final-save-done ]; then echo "clean save already done"; exit 0; fi
+          export LOGF=/tmp/full-script.log
+          source ./avd-lib.sh
+          adb emu kill || true
+          for i in $(seq 1 45); do pgrep -f qemu-system >/dev/null || break; sleep 2; done
+          sleep 3
+          save_state c || true
+          printf 'run_id: %s\nv: 2\nstate: ended\nnote: emergency save\nupdated: %s\n' "$GITHUB_RUN_ID" "$(date -u +%FT%TZ)" > logs/session-state.txt
+          git config user.name github-actions
+          git config user.email actions@github.com
+          git add logs
+          git commit -m "ended run $GITHUB_RUN_ID (emergency save)" || true
+          git pull --rebase origin main -q || true
+          git push || true
