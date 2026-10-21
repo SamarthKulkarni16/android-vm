@@ -10,3 +10,20 @@ emulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86
 
 === opening ngrok tcp tunnel ===
 adb connect 4.tcp.us-cal-1.ngrok.io:23491
+[main 8185b56] state running run 39531530814
+ 3 files changed, 17 insertions(+), 127 deletions(-)
+To https://github.com/SamarthKulkarni16/android-vm
+   a0c0d09..8185b56  main -> main
+=== saving phone state g20261021T0240 (encrypted) at Wed Oct 21 02:40:59 UTC 2026 ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 5511068
+-rw-r--r-- 1 runner runner 1887436800 Oct 21 02:41 avd-g20261021T0240-p1of3
+-rw-r--r-- 1 runner runner 1887436800 Oct 21 02:42 avd-g20261021T0240-p2of3
+-rw-r--r-- 1 runner runner 1868446864 Oct 21 02:44 avd-g20261021T0240-p3of3
+save ok g20261021T0240 at Wed Oct 21 02:46:35 UTC 2026; kept: g20261021T0240 c20261021T0213
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== saving phone state c20261021T0253 (encrypted) at Wed Oct 21 02:53:11 UTC 2026 ===
+=== stopping: emulator stopped by itself at Wed Oct 21 02:54:35 UTC 2026 ===
