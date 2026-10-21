@@ -1,2 +1,6 @@
+adb connect 4.tcp.us-cal-1.ngrok.io:23491
 run_id: 39531530814
-state: booting
+v: 2
+state: running
+generated: Wed Oct 21 02:20:48 UTC 2026
+ends_utc: 2026-10-21T07:10:35Z
