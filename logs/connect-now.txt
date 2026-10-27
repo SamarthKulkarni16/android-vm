@@ -1,2 +1,6 @@
+adb connect 2.tcp.ngrok.io:16684
 run_id: 40427010035
-state: booting
+v: 2
+state: running
+generated: Tue Oct 27 00:35:41 UTC 2026
+ends_utc: 2026-10-27T05:32:07Z
