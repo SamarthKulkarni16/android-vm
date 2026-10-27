@@ -5,3 +5,181 @@ emulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86
 === opening ngrok tcp tunnel ===
 [nav] 3-button navigation requested
 adb connect 4.tcp.us-cal-1.ngrok.io:21897
+[main 9c8c6d5] state running run 40467856050
+ 3 files changed, 11 insertions(+), 196 deletions(-)
+To https://github.com/SamarthKulkarni16/android-vm
+   35a1a16..9c8c6d5  main -> main
+app-diag d26b already done
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== saving phone state g20261027T0758 (encrypted) at Tue Oct 27 07:58:59 UTC 2026 ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 6226592
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 07:59 avd-g20261027T0758-p1of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 08:00 avd-g20261027T0758-p2of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 08:01 avd-g20261027T0758-p3of4
+-rw-r--r-- 1 runner runner  713718416 Oct 27 08:02 avd-g20261027T0758-p4of4
+save ok g20261027T0758 at Tue Oct 27 08:04:35 UTC 2026; kept: g20261027T0758 c20261027T0653
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== saving phone state g20261027T0819 (encrypted) at Tue Oct 27 08:19:03 UTC 2026 ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 6226508
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 08:19 avd-g20261027T0819-p1of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 08:20 avd-g20261027T0819-p2of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 08:21 avd-g20261027T0819-p3of4
+-rw-r--r-- 1 runner runner  713632512 Oct 27 08:22 avd-g20261027T0819-p4of4
+save ok g20261027T0819 at Tue Oct 27 08:23:48 UTC 2026; kept: g20261027T0819 c20261027T0653
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== saving phone state g20261027T0839 (encrypted) at Tue Oct 27 08:39:07 UTC 2026 ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 6226212
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 08:39 avd-g20261027T0839-p1of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 08:40 avd-g20261027T0839-p2of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 08:41 avd-g20261027T0839-p3of4
+-rw-r--r-- 1 runner runner  713330256 Oct 27 08:42 avd-g20261027T0839-p4of4
+save ok g20261027T0839 at Tue Oct 27 08:44:17 UTC 2026; kept: g20261027T0839 c20261027T0653
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== saving phone state g20261027T0859 (encrypted) at Tue Oct 27 08:59:11 UTC 2026 ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 6226132
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 09:00 avd-g20261027T0859-p1of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 09:00 avd-g20261027T0859-p2of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 09:01 avd-g20261027T0859-p3of4
+-rw-r--r-- 1 runner runner  713246480 Oct 27 09:02 avd-g20261027T0859-p4of4
+save ok g20261027T0859 at Tue Oct 27 09:04:43 UTC 2026; kept: g20261027T0859 c20261027T0653
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== saving phone state g20261027T0919 (encrypted) at Tue Oct 27 09:19:15 UTC 2026 ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 6226072
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 09:20 avd-g20261027T0919-p1of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 09:20 avd-g20261027T0919-p2of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 09:21 avd-g20261027T0919-p3of4
+-rw-r--r-- 1 runner runner  713184288 Oct 27 09:22 avd-g20261027T0919-p4of4
+save ok g20261027T0919 at Tue Oct 27 09:24:50 UTC 2026; kept: g20261027T0919 c20261027T0653
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== saving phone state g20261027T0939 (encrypted) at Tue Oct 27 09:39:21 UTC 2026 ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 6225712
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 09:40 avd-g20261027T0939-p1of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 09:41 avd-g20261027T0939-p2of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 09:41 avd-g20261027T0939-p3of4
+-rw-r--r-- 1 runner runner  712816032 Oct 27 09:42 avd-g20261027T0939-p4of4
+save ok g20261027T0939 at Tue Oct 27 09:44:48 UTC 2026; kept: g20261027T0939 c20261027T0653
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== saving phone state g20261027T0959 (encrypted) at Tue Oct 27 09:59:26 UTC 2026 ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 6225652
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 10:00 avd-g20261027T0959-p1of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 10:01 avd-g20261027T0959-p2of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 10:02 avd-g20261027T0959-p3of4
+-rw-r--r-- 1 runner runner  712754848 Oct 27 10:02 avd-g20261027T0959-p4of4
+save ok g20261027T0959 at Tue Oct 27 10:04:37 UTC 2026; kept: g20261027T0959 c20261027T0653
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== saving phone state g20261027T1019 (encrypted) at Tue Oct 27 10:19:32 UTC 2026 ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 6225680
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 10:20 avd-g20261027T1019-p1of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 10:21 avd-g20261027T1019-p2of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 10:22 avd-g20261027T1019-p3of4
+-rw-r--r-- 1 runner runner  712785360 Oct 27 10:22 avd-g20261027T1019-p4of4
+save ok g20261027T1019 at Tue Oct 27 10:24:55 UTC 2026; kept: g20261027T1019 c20261027T0653
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== saving phone state g20261027T1039 (encrypted) at Tue Oct 27 10:39:37 UTC 2026 ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 6226620
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 10:40 avd-g20261027T1039-p1of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 10:41 avd-g20261027T1039-p2of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 10:42 avd-g20261027T1039-p3of4
+-rw-r--r-- 1 runner runner  713747168 Oct 27 10:42 avd-g20261027T1039-p4of4
+save ok g20261027T1039 at Tue Oct 27 10:44:24 UTC 2026; kept: g20261027T1039 c20261027T0653
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== saving phone state g20261027T1059 (encrypted) at Tue Oct 27 10:59:41 UTC 2026 ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 6226268
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 11:00 avd-g20261027T1059-p1of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 11:01 avd-g20261027T1059-p2of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 11:02 avd-g20261027T1059-p3of4
+-rw-r--r-- 1 runner runner  713387040 Oct 27 11:02 avd-g20261027T1059-p4of4
+save ok g20261027T1059 at Tue Oct 27 11:04:28 UTC 2026; kept: g20261027T1059 c20261027T0653
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== saving phone state g20261027T1119 (encrypted) at Tue Oct 27 11:19:49 UTC 2026 ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 6226248
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 11:20 avd-g20261027T1119-p1of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 11:21 avd-g20261027T1119-p2of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 11:22 avd-g20261027T1119-p3of4
+-rw-r--r-- 1 runner runner  713365232 Oct 27 11:23 avd-g20261027T1119-p4of4
+save ok g20261027T1119 at Tue Oct 27 11:25:48 UTC 2026; kept: g20261027T1119 c20261027T0653
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== saving phone state g20261027T1139 (encrypted) at Tue Oct 27 11:39:53 UTC 2026 ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 6226168
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 11:40 avd-g20261027T1139-p1of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 11:41 avd-g20261027T1139-p2of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 11:42 avd-g20261027T1139-p3of4
+-rw-r--r-- 1 runner runner  713282000 Oct 27 11:43 avd-g20261027T1139-p4of4
+save ok g20261027T1139 at Tue Oct 27 11:45:39 UTC 2026; kept: g20261027T1139 c20261027T0653
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== saving phone state g20261027T1159 (encrypted) at Tue Oct 27 11:59:59 UTC 2026 ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 6225796
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 12:00 avd-g20261027T1159-p1of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 12:01 avd-g20261027T1159-p2of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 12:02 avd-g20261027T1159-p3of4
+-rw-r--r-- 1 runner runner  712901072 Oct 27 12:03 avd-g20261027T1159-p4of4
+save ok g20261027T1159 at Tue Oct 27 12:05:34 UTC 2026; kept: g20261027T1159 c20261027T0653
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== saving phone state g20261027T1220 (encrypted) at Tue Oct 27 12:20:05 UTC 2026 ===
+tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
+total 6226044
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 12:20 avd-g20261027T1220-p1of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 12:21 avd-g20261027T1220-p2of4
+-rw-r--r-- 1 runner runner 1887436800 Oct 27 12:22 avd-g20261027T1220-p3of4
+-rw-r--r-- 1 runner runner  713157456 Oct 27 12:23 avd-g20261027T1220-p4of4
+save ok g20261027T1220 at Tue Oct 27 12:25:29 UTC 2026; kept: g20261027T1220 c20261027T0653
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+=== stopping: 5 hour limit reached at Tue Oct 27 12:33:48 UTC 2026 ===
