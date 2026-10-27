@@ -1,6 +1,6 @@
 run_id: 40427010035
 v: 2
-state: running
-note: phone ready
-updated: 2026-10-27T00:35:41Z
+state: saving
+note: emulator stopped by itself
+updated: 2026-10-27T01:48:33Z
 ends_utc: 2026-10-27T05:32:07Z
