@@ -1,437 +1,68 @@
-id: d26a
-run: 40427010035   utc: 2026-10-27T00:36:59Z
-=== device identity (what the app can see) ===
-ro.build.version.release = 12
-ro.build.version.sdk = 31
-ro.product.model = sdk_gphone64_x86_64
-ro.product.manufacturer = Google
-ro.product.brand = google
-ro.hardware = ranchu
-ro.kernel.qemu = 1
-ro.build.fingerprint = [LONG]:12/SE1A.211212.001.B1/8023802:user/release-keys
-ro.build.tags = release-keys
-ro.build.type = user
-ro.debuggable = 0
-ro.product.cpu.abilist = x86_64,arm64-v8a
-ro.dalvik.vm.native.bridge = libndk_translation.so
-ro.dalvik.vm.isa.arm64 = x86_64
-ro.dalvik.vm.isa.arm = x86
-ro.boot.qemu = 1
-ro.adb.secure = 1
-persist.sys.timezone = Etc/UTC
-=== google services ===
-com.google.android.gms:     versionName=26.39.33 (190800-995470952)
-com.android.vending:     versionName=53.7.23-31 [0] [PR] 1001145691
-com.google.android.webview:     versionName=155.0.8059.43
-com.android.chrome:     versionName=155.0.8059.84
-=== emulator config (host side) ===
-abi.type = x86_64
-hw.audioInput = yes
-hw.audioOutput = yes
-hw.camera.back = emulated
-hw.camera.back.orientation = 90
-hw.camera.front = none
-hw.camera.front.orientation = 90
-hw.cpu.ncore = 2
-hw.gpu.enabled = no
-hw.gpu.mode = auto
-hw.ramSize = 96M
-hw.sdCard = yes
-image.sysdir.1 = [LONG]
-sdcard.size = 512 MB
-showDeviceFrame = yes
-tag.id = google_apis_playstore
-vm.heapSize = 64M
-hw.cpu.ncore=2
-hw.cpu.ncore=2
-hw.cpu.ncore=2
-hw.cpu.ncore=2
-hw.cpu.ncore=2
-hw.cpu.ncore=2
-hw.cpu.ncore=2
-hw.cpu.ncore=2
-emulator cmdline:
-[LONG].338.0/externals/node24/bin/node [LONG].js
-[LONG] -port 5554 -avd persistent_avd -no-window -gpu swiftshader_indirect -no-snapshot -noaudio -no-boot-anim
-[LONG] --no-rate-limit [LONG].2.12.db --url=https://clients2.google.com/cr/report [LONG] --annotation=ver=37.2.12-16428233 --initial-client-fd=4 --shared-client-connection
-=== network inside the phone ===
---- x.x.x.x ping statistics ---
-2 packets transmitted, 0 received, 100% packet loss, time 1014ms
-
---- snapchat.com ping statistics ---
-2 packets transmitted, 0 received, 100% packet loss, time 1015ms
-
---- a2047.api8.akamai.net ping statistics ---
-2 packets transmitted, 0 received, 100% packet loss, time 1029ms
-
-dns:  
-0
-  NetworkAgentInfo{network{100}  handle{432902426637}  ni{MOBILE[HSPA] CONNECTED extra: epc.tmobile.com} Score(50 ; KeepConnected : 0 ; Policies : EVER_VALIDATED&IS_VALIDATED)  everValidated lastValidated  lp{{InterfaceName: eth0 LinkAddresses: [ x.x.x.x/24 ] 
-      NetworkRequest [ LISTEN id=13, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&VALIDATED&NOT_VCN_MANAGED Uid: 1000 RequestorUid: 1000 RequestorPkg: android] ]
-  NetworkAgentInfo{network{102}  handle{441492361229}  ni{WIFI CONNECTED extra: } Score(60 ; KeepConnected : 0 ; Policies : TRANSPORT_PRIMARY&EVER_VALIDATED&IS_UNMETERED&IS_VALIDATED)  everValidated lastValidated  lp{{InterfaceName: wlan0 LinkAddresses: [ fe80
-      NetworkRequest [ LISTEN id=13, [ Capabilities: INTERNET&NOT_RESTRICTED&TRUSTED&VALIDATED&NOT_VCN_MANAGED Uid: 1000 RequestorUid: 1000 RequestorPkg: android] ]
-null
-=== date/time inside the phone (a wrong clock breaks TLS) ===
-Tue Oct 27 00:37:12 UTC 2026
-Tue Oct 27 00:37:12 UTC 2026
-=== memory ===
-MemTotal:        2015788 kB
-MemFree:          162044 kB
-MemAvailable:     729984 kB
-=== camera service ===
-
-== Service global info: ==
-
-Number of camera devices: 1
-Number of normal camera devices: 1
-Number of public camera devices visible to API1: 1
-    Device 0 maps to "1"
-Active Camera Clients:
-[]
-Allowed user IDs: 0
-
-== Camera service events log (most recent at top): ==
-  10-27 00:35:26 : USER_SWITCH previous allowed user IDs: <None>, current allowed user IDs: 0
-  10-27 00:35:18 : ADD device 1, reason: (Device added)
-
-== Camera device 1 dynamic info: ==
-  Device 1 is closed, no client instance
-== Camera Provider HAL internal/0-0 (v2.7, remote) static info: 1 devices: ==
-== Camera HAL device device@3.7/internal/1 (v3.7) static information: ==
-  Resource cost: 100
-  Conflicting devices: None
-  API1 info:
-    Has a flash unit: true
+id: d26b
+run: 40435189223   utc: 2026-10-27T01:59:44Z
+=== hardware the phone actually got ===
+MemTotal:        4011168 kB
+MemAvailable:    2096000 kB
+SwapTotal:       3008372 kB
+SwapFree:        3007860 kB
+2
+dalvik.vm.heapsize = 576m
+dalvik.vm.heapgrowthlimit = 192m
+dalvik.vm.heapstartsize = 8m
+      1 hw.camera.back = emulated
+      1 hw.camera.back.orientation = 90
+      1 hw.camera.front.orientation = 90
+      1 hw.camera.front=emulated
+      1 hw.cpu.ncore = 2
+      9 hw.cpu.ncore=2
+      1 hw.ramSize=4096M
+      1 vm.heapSize=512M
+Number of camera devices: 2
+    Facing: Front
     Facing: Back
-    Orientation: 90
-=== OpenGL renderer ===
-GLES: Google (Google Inc.), Android Emulator OpenGL ES Translator (Google SwiftShader), OpenGL ES 3.0 (OpenGL ES 3.0 SwiftShader x.x.x.x)
-GL_EXT_debug_marker GL_EXT_robustness GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear [LONG] [LONG] GL_OES_depth_texture GL_OES_texture_half_flo
-
-################ APP com.snapchat.android ################
-    primaryCpuAbi=arm64-v8a
-    secondaryCpuAbi=null
-    versionCode=321072 minSdk=23 targetSdk=36
-    versionName=x.x.x.x
-    firstInstallTime=2026-10-20 03:52:03
-    lastUpdateTime=2026-10-20 03:52:03
-package:/data/app/~~[LONG].snapchat.[LONG].apk=com.snapchat.android
---- launching 00:37:13
-Events injected: 1
-## Network stats: elapsed time=159ms (0ms mobile, 0ms wifi, 159ms not connected)
---- after 20s: pid=6551 focus:
-  mCurrentFocus=Window{d7b71a0 u0 com.snapchat.android/com.snap.identity.loginsignup.ui.LoginSignupActivity}
-  mFocusedApp=ActivityRecord{337d5ca u0 com.snapchat.android/com.snap.identity.loginsignup.ui.LoginSignupActivity t31}
---- after 45s: pid=6551 focus:
-  mCurrentFocus=Window{d7b71a0 u0 com.snapchat.android/com.snap.identity.loginsignup.ui.LoginSignupActivity}
-  mFocusedApp=ActivityRecord{337d5ca u0 com.snapchat.android/com.snap.identity.loginsignup.ui.LoginSignupActivity t31}
---- cpu snapshot (is the phone starved / translating?)
-Tasks: 265 total,   2 running, 263 sleeping,   0 stopped,   0 zombie
-  Mem:  2015788K total,  1864404K used,   151384K free,    13912K buffers
- Swap:  1511836K total,   899448K used,   612388K free,   574156K cached
-200%cpu   6%user  38%nice  91%sys  26%idle   0%iow   0%irq   9%sirq  29%host
+=== top CPU users right now ===
+Tasks: 252 total,   1 running, 251 sleeping,   0 stopped,   0 zombie
+  Mem:  4011168K total,  3428104K used,   583064K free,    31660K buffers
+ Swap:  3008372K total,      512K used,  3007860K free,  2058536K cached
+200%cpu   0%user   0%nice   4%sys 196%idle   0%iow   0%irq   0%sirq   0%host
   PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS
- 8309 50097        30  10  12G 334M  45M R 35.2  16.9   0:02.73 dex2oat64 --zip-fd=7 --zip-location=base.apk --oat-fd=8 --oat-location=/data/app/~~[LONG].google.android.apps.[LONG].odex --input-vdex-fd=-1 --output-vdex-fd=9 --app-image-fd=12 --image-format=lz4
- 6462 u0_a99       20   0  13G 106M  65M S 26.4   5.3   0:11.77 com.android.vending:background
-  117 root         20   0    0    0    0 I 26.4   0.0   0:01.38 [kworker/1:3-events]
-   18 root         20   0    0    0    0 S 23.5   0.0   0:02.36 [ksoftirqd/1]
-  441 root         20   0  10G 3.3M 2.6M S 20.5   0.1   0:00.62 installd
- 8340 shell        20   0  10G 4.5M 3.7M R  5.8   0.2   0:00.02 top -b -n 1
-  301 root         20   0  10G 1.2M 1.2M S  5.8   0.0   0:01.94 dhcpclient -i wlan0 --no-gateway
---- app threads state (pid 6551)
-State:	S (sleeping)
-VmRSS:	   45796 kB
-Threads:	59
---- crash buffer
---- filtered main/system/events log (errors, native, translation, GL, camera, network, integrity)
-10-27 00:37:54.071  6462  6521 I Finsky:background: [50] RM: getStatus [LONG] request_id=180 pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.apk isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.072  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=180, files_to_download=[com.google.android.googlequicksearchbox.apk(size:76415875)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg],
-10-27 00:37:54.078  6462  6462 I Finsky:background: [2] RF: onProgress request_id=180, pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.apk isid=L2sPBfBvRUeglzcGP700Hg artifact_bytes=0/76415875 pkg_bytes=0/8567
-10-27 00:37:54.170  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <181:RUNNING:0%[0%]> in group com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.174  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=181, pkg_id=com.google.android.googlequicksearchbox [LONG] reason=auto_update isid=L2sPBfBvRUeglzcGP700Hg, [LONG], legacy_status_code=192, size
-10-27 00:37:54.176  6462  6521 I Finsky:background: [50] RM: getStatus [LONG] request_id=181 pkg_id=com.google.android.googlequicksearchbox [LONG] isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.179  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=181, files_to_download=[[LONG](size:7679371)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg], display_data[invisible=true, title=Go
-10-27 00:37:54.183  6462  6462 I Finsky:background: [2] RF: onProgress request_id=181, pkg_id=com.google.android.googlequicksearchbox [LONG] isid=L2sPBfBvRUeglzcGP700Hg artifact_bytes=0/7679371 pkg_bytes=0/85675927
-10-27 00:37:54.189  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <182:RUNNING:0%[0%]> in group com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.220  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=182, pkg_id=com.google.android.googlequicksearchbox artifact_id=config.mdpi reason=auto_update isid=L2sPBfBvRUeglzcGP700Hg, [LONG], legacy_stat
-10-27 00:37:54.221  6462  6521 I Finsky:background: [50] RM: getStatus [LONG] request_id=182 pkg_id=com.google.android.googlequicksearchbox artifact_id=config.mdpi isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.221  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=182, files_to_download=[config.mdpi(size:385573)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg], display_data[invisible=true, titl
-10-27 00:37:54.222  6462  6462 I Finsky:background: [2] RF: onProgress request_id=182, pkg_id=com.google.android.googlequicksearchbox artifact_id=config.mdpi isid=L2sPBfBvRUeglzcGP700Hg artifact_bytes=0/385573 pkg_bytes=0/85675927
-10-27 00:37:54.460  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <179:RUNNING:100%[100%]> in group com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.468  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=179, pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.dm reason=auto_update isid=L2sPBfBvRUeg
-10-27 00:37:54.468  6462  6539 I Finsky:background: [55] RM: getStatus [LONG] request_id=179 pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.dm isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.470  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=179, files_to_download=[com.google.android.googlequicksearchbox.dm(size:1195108)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg], d
-10-27 00:37:54.474  6462  6462 I Finsky:background: [2] RF: onProgress request_id=179, pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.dm isid=L2sPBfBvRUeglzcGP700Hg [LONG] pkg_bytes=0/85675927
-10-27 00:37:54.493  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <179:SUCCEEDED> in group com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.493  6462  7820 I Finsky:background: [109] RM: receive resource status onSuccess download_request_id=179, pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.dm reason=auto_update isid=L2sPBfBvRUegl
-10-27 00:37:54.495  6462  6539 I Finsky:background: [55] RM: getStatus [LONG] request_id=179 pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.dm isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.501  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=179, files_to_download=[com.google.android.googlequicksearchbox.dm(size:1195108)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg], d
-10-27 00:37:54.506  6462  6462 I Finsky:background: [2] RF: onResourceSuccess request_id=179, pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.dm isid=L2sPBfBvRUeglzcGP700Hg [LONG] pkg_bytes=1195108/85675927
-10-27 00:37:54.507  6462  6462 I Finsky:background: [2] RF: onSuccess request_id=179, pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.dm isid=L2sPBfBvRUeglzcGP700Hg [LONG] pkg_bytes=1195108/85675927
-10-27 00:37:54.513  6462  6525 I Finsky:background: [54] RF::PP-Decompress: starting to decompress for com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] [tid: 1000000034].
-10-27 00:37:54.514  6462  6525 I Finsky:background: [54] RF::PP-Copy: starting to copy for com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] [tid: 1000000034]
-10-27 00:37:54.514  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] status:RESOURCE_FETCH_PROGRESS, size: 1195108/85675927
-10-27 00:37:54.517  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] status:RESOURCE_FETCH_PROGRESS, size: 1195108/85675927
-10-27 00:37:54.519  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT25.24S, a
-10-27 00:37:54.533  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.google.android.googlequicksearchbox, isid: L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.543  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT25.265S, 
-10-27 00:37:54.556  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.google.android.googlequicksearchbox, isid: L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.563  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <182:RUNNING:100%[100%]> in group com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.563  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=182, pkg_id=com.google.android.googlequicksearchbox artifact_id=config.mdpi reason=auto_update isid=L2sPBfBvRUeglzcGP700Hg, [LONG], legacy_stat
-10-27 00:37:54.576  6462  6521 I Finsky:background: [50] RM: getStatus [LONG] request_id=182 pkg_id=com.google.android.googlequicksearchbox artifact_id=config.mdpi isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.589  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=182, files_to_download=[config.mdpi(size:385573)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg], display_data[invisible=true, titl
-10-27 00:37:54.590  6462  6462 I Finsky:background: [2] RF: onProgress request_id=182, pkg_id=com.google.android.googlequicksearchbox artifact_id=config.mdpi isid=L2sPBfBvRUeglzcGP700Hg [LONG] pkg_bytes=1195108/85675927
-10-27 00:37:54.598  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.apps.messaging, isid:8wjOsmmnS16wgCLQtNvxDg] state:INSTALLING, [Package:com.google.android.googlequi
-10-27 00:37:54.598  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.apps.messaging, isid:8wjOsmmnS16wgCLQtNvxDg] state:INSTALLING, [Package:com.google.android.googlequi
-10-27 00:37:54.606  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <182:SUCCEEDED> in group com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.611  6462  7820 I Finsky:background: [109] RM: receive resource status onSuccess download_request_id=182, pkg_id=com.google.android.googlequicksearchbox artifact_id=config.mdpi reason=auto_update isid=L2sPBfBvRUeglzcGP700Hg, [LONG], legacy_statu
-10-27 00:37:54.613  6462  6539 I Finsky:background: [55] RM: getStatus [LONG] request_id=182 pkg_id=com.google.android.googlequicksearchbox artifact_id=config.mdpi isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.614  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=182, files_to_download=[config.mdpi(size:385573)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg], display_data[invisible=true, titl
-10-27 00:37:54.616  6462  6462 I Finsky:background: [2] RF: onResourceSuccess request_id=182, pkg_id=com.google.android.googlequicksearchbox artifact_id=config.mdpi isid=L2sPBfBvRUeglzcGP700Hg [LONG] pkg_bytes=1580681/85675927
-10-27 00:37:54.618  6462  6462 I Finsky:background: [2] RF: onSuccess request_id=182, pkg_id=com.google.android.googlequicksearchbox artifact_id=config.mdpi isid=L2sPBfBvRUeglzcGP700Hg [LONG] pkg_bytes=1580681/85675927
-10-27 00:37:54.619  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] status:RESOURCE_FETCH_PROGRESS, size: 1580681/85675927
-10-27 00:37:54.621  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] status:RESOURCE_FETCH_PROGRESS, size: 1580681/85675927
-10-27 00:37:54.625  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT25.347S, 
-10-27 00:37:54.626  6462  6518 I Finsky:background: [48] RF::PP-Decompress: starting to decompress for com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] [tid: 1000000034].
-10-27 00:37:54.627  6462  6518 I Finsky:background: [48] RF::PP-Copy: starting to copy for com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] [tid: 1000000034]
-10-27 00:37:54.649  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.google.android.googlequicksearchbox, isid: L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.651  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT25.373S, 
-10-27 00:37:54.675  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.google.android.googlequicksearchbox, isid: L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:54.697  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.apps.messaging, isid:8wjOsmmnS16wgCLQtNvxDg] state:INSTALLING, [Package:com.google.android.googlequi
-10-27 00:37:54.698  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.apps.messaging, isid:8wjOsmmnS16wgCLQtNvxDg] state:INSTALLING, [Package:com.google.android.googlequi
-10-27 00:37:54.967  6462  6525 I Finsky:background: [54] RF::PP-Verify: starting to verify for com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] [tid: 1000000034].
-10-27 00:37:54.969  6462  6518 I Finsky:background: [48] RF::PP-Verify: starting to verify for com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] [tid: 1000000034].
-10-27 00:37:54.995  6462  6521 I Finsky:background: [50] RM: remove [LONG] request_id=179 pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.dm isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:55.018  6462  6539 I Finsky:background: [55] RM: remove [LONG] request_id=182 pkg_id=com.google.android.googlequicksearchbox artifact_id=config.mdpi isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:55.054  6462  7820 I Finsky:background: [109] DS: DS: onRemove(request_id=179, files_to_download=[com.google.android.googlequicksearchbox.dm(size:1195108)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg], display_d
-10-27 00:37:55.085  6462  7820 I Finsky:background: [109] DS: DS: onRemove(request_id=182, files_to_download=[config.mdpi(size:385573)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg], display_data[invisible=true, title=Google
-10-27 00:37:55.688  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <180:RUNNING:5%[5%]> in group com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:55.689  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=180, pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.apk reason=auto_update isid=L2sPBfBvRUe
-10-27 00:37:55.696  6462  6539 I Finsky:background: [55] RM: getStatus [LONG] request_id=180 pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.apk isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:55.709  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=180, files_to_download=[com.google.android.googlequicksearchbox.apk(size:76415875)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg],
-10-27 00:37:55.713  6462  6462 I Finsky:background: [2] RF: onProgress request_id=180, pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.apk isid=L2sPBfBvRUeglzcGP700Hg [LONG] pkg_bytes=1580681/85675927
-10-27 00:37:55.715  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] status:RESOURCE_FETCH_PROGRESS, size: 5588830/85675927
-10-27 00:37:55.721  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT26.443S, 
-10-27 00:37:55.723  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <181:RUNNING:87%[87%]> in group com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:55.723  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=181, pkg_id=com.google.android.googlequicksearchbox [LONG] reason=auto_update isid=L2sPBfBvRUeglzcGP700Hg, [LONG], legacy_status_code=192, size
-10-27 00:37:55.726  6462  6539 I Finsky:background: [55] RM: getStatus [LONG] request_id=181 pkg_id=com.google.android.googlequicksearchbox [LONG] isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:55.731  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=181, files_to_download=[[LONG](size:7679371)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg], display_data[invisible=true, title=Go
-10-27 00:37:55.740  6462  6462 I Finsky:background: [2] RF: onProgress request_id=181, pkg_id=com.google.android.googlequicksearchbox [LONG] isid=L2sPBfBvRUeglzcGP700Hg [LONG] pkg_bytes=5588830/85675927
-10-27 00:37:55.758  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.google.android.googlequicksearchbox, isid: L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:55.763  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.apps.messaging, isid:8wjOsmmnS16wgCLQtNvxDg] state:INSTALLING, [Package:com.google.android.googlequi
-10-27 00:37:55.777  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <181:RUNNING:100%[100%]> in group com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:55.777  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=181, pkg_id=com.google.android.googlequicksearchbox [LONG] reason=auto_update isid=L2sPBfBvRUeglzcGP700Hg, [LONG], legacy_status_code=192, size
-10-27 00:37:55.778  6462  6521 I Finsky:background: [50] RM: getStatus [LONG] request_id=181 pkg_id=com.google.android.googlequicksearchbox [LONG] isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:55.779  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=181, files_to_download=[[LONG](size:7679371)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg], display_data[invisible=true, title=Go
-10-27 00:37:55.785  6462  6462 I Finsky:background: [2] RF: onProgress request_id=181, pkg_id=com.google.android.googlequicksearchbox [LONG] isid=L2sPBfBvRUeglzcGP700Hg [LONG] pkg_bytes=12283245/85675927
-10-27 00:37:55.795  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <181:SUCCEEDED> in group com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:55.796  6462  7820 I Finsky:background: [109] RM: receive resource status onSuccess download_request_id=181, pkg_id=com.google.android.googlequicksearchbox [LONG] reason=auto_update isid=L2sPBfBvRUeglzcGP700Hg, [LONG], legacy_status_code=200, size:
-10-27 00:37:55.800  6462  6539 I Finsky:background: [55] RM: getStatus [LONG] request_id=181 pkg_id=com.google.android.googlequicksearchbox [LONG] isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:55.800  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=181, files_to_download=[[LONG](size:7679371)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg], display_data[invisible=true, title=Go
-10-27 00:37:55.808  6462  6462 I Finsky:background: [2] RF: onResourceSuccess request_id=181, pkg_id=com.google.android.googlequicksearchbox [LONG] isid=L2sPBfBvRUeglzcGP700Hg [LONG] pkg_bytes=13268201/85675927
-10-27 00:37:55.808  6462  6462 I Finsky:background: [2] RF: onSuccess request_id=181, pkg_id=com.google.android.googlequicksearchbox [LONG] isid=L2sPBfBvRUeglzcGP700Hg [LONG] pkg_bytes=13268201/85675927
-10-27 00:37:55.813  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] status:RESOURCE_FETCH_PROGRESS, size: 13268201/85675927
-10-27 00:37:55.813  6462  6518 I Finsky:background: [48] RF::PP-Decompress: starting to decompress for com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] [tid: 1000000034].
-10-27 00:37:55.813  6462  6518 I Finsky:background: [48] RF::PP-Copy: starting to copy for com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] [tid: 1000000034]
-10-27 00:37:55.815  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT26.537S, 
-10-27 00:37:55.816  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] status:RESOURCE_FETCH_PROGRESS, size: 13268201/85675927
-10-27 00:37:55.823  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.google.android.googlequicksearchbox, isid: L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:55.826  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.apps.messaging, isid:8wjOsmmnS16wgCLQtNvxDg] state:INSTALLING, [Package:com.google.android.googlequi
-10-27 00:37:55.827  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT26.549S, 
-10-27 00:37:55.841  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.google.android.googlequicksearchbox, isid: L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:55.846  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.apps.messaging, isid:8wjOsmmnS16wgCLQtNvxDg] state:INSTALLING, [Package:com.google.android.googlequi
-10-27 00:37:56.800  6462  6525 I Finsky:background: [54] RF::PP-Verify: starting to verify for com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] [tid: 1000000034].
-10-27 00:37:56.825  6462  6521 I Finsky:background: [50] RM: remove [LONG] request_id=181 pkg_id=com.google.android.googlequicksearchbox [LONG] isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:56.872  6462  7820 I Finsky:background: [109] DS: DS: onRemove(request_id=181, files_to_download=[[LONG](size:7679371)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg], display_data[invisible=true, title=Google], [
-10-27 00:37:57.869  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <180:RUNNING:19%[19%]> in group com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:57.870  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=180, pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.apk reason=auto_update isid=L2sPBfBvRUe
-10-27 00:37:57.873  6462  6539 I Finsky:background: [55] RM: getStatus [LONG] request_id=180 pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.apk isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:57.874  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=180, files_to_download=[com.google.android.googlequicksearchbox.apk(size:76415875)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg],
-10-27 00:37:57.877  6462  6462 I Finsky:background: [2] RF: onProgress request_id=180, pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.apk isid=L2sPBfBvRUeglzcGP700Hg [LONG] pkg_bytes=13268201/85675927
-10-27 00:37:57.879  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] status:RESOURCE_FETCH_PROGRESS, size: 23980417/85675927
-10-27 00:37:57.882  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT28.604S, 
-10-27 00:37:57.924  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.google.android.googlequicksearchbox, isid: L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:57.943  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.apps.messaging, isid:8wjOsmmnS16wgCLQtNvxDg] state:INSTALLING, [Package:com.google.android.googlequi
-10-27 00:37:59.882  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <180:RUNNING:35%[35%]> in group com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:59.883  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=180, pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.apk reason=auto_update isid=L2sPBfBvRUe
-10-27 00:37:59.904  6462  6539 I Finsky:background: [55] RM: getStatus [LONG] request_id=180 pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.apk isid=L2sPBfBvRUeglzcGP700Hg
-10-27 00:37:59.942  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=180, files_to_download=[com.google.android.googlequicksearchbox.apk(size:76415875)], context[group_id=com.google.android.googlequicksearchbox:L2sPBfBvRUeglzcGP700Hg],
-10-27 00:37:59.961  6462  6462 I Finsky:background: [2] RF: onProgress request_id=180, pkg_id=com.google.android.googlequicksearchbox artifact_id=com.google.android.googlequicksearchbox.apk isid=L2sPBfBvRUeglzcGP700Hg [LONG] pkg_bytes=23980417/85675927
-10-27 00:37:59.974  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] status:RESOURCE_FETCH_PROGRESS, size: 36332922/85675927
-10-27 00:37:59.978  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT30.7S, at
-10-27 00:38:00.051  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.google.android.googlequicksearchbox, isid: L2sPBfBvRUeglzcGP700Hg
-10-27 00:38:00.055  8347  8347 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-10-27 00:38:00.062  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.apps.messaging, isid:8wjOsmmnS16wgCLQtNvxDg] state:INSTALLING, [Package:com.google.android.googlequi
-10-27 00:38:00.119  8347  8347 I AndroidRuntime: Using default boot image
-10-27 00:38:00.119  8347  8347 I AndroidRuntime: Leaving lock profiling enabled
-
-################ APP com.zhiliaoapp.musically ################
-    primaryCpuAbi=arm64-v8a
-    secondaryCpuAbi=null
-    versionCode=2024701040 minSdk=23 targetSdk=36
-    versionName=47.1.4
-    firstInstallTime=2026-10-20 03:53:20
-    lastUpdateTime=2026-10-20 03:53:20
-package:/data/app/~~[LONG].zhiliaoapp.[LONG].apk=com.zhiliaoapp.musically
---- launching 00:38:02
-Events injected: 1
-## Network stats: elapsed time=309ms (0ms mobile, 0ms wifi, 309ms not connected)
---- after 20s: pid= focus:
-  mCurrentFocus=Window{d7b71a0 u0 com.snapchat.android/com.snap.identity.loginsignup.ui.LoginSignupActivity}
-  mFocusedApp=ActivityRecord{337d5ca u0 com.snapchat.android/com.snap.identity.loginsignup.ui.LoginSignupActivity t31}
---- after 45s: pid= focus:
-  mCurrentFocus=Window{d7b71a0 u0 com.snapchat.android/com.snap.identity.loginsignup.ui.LoginSignupActivity}
-  mFocusedApp=ActivityRecord{337d5ca u0 com.snapchat.android/com.snap.identity.loginsignup.ui.LoginSignupActivity t31}
---- cpu snapshot (is the phone starved / translating?)
-Tasks: 264 total,   2 running, 262 sleeping,   0 stopped,   0 zombie
-  Mem:  2015788K total,  1838648K used,   177140K free,    16028K buffers
- Swap:  1511836K total,   896064K used,   615772K free,   765560K cached
-200%cpu  12%user  96%nice  24%sys  68%idle   0%iow   0%irq   0%sirq   0%host
-  PID USER         PR  NI VIRT  RES  SHR S[%CPU] %MEM     TIME+ ARGS
- 6462 u0_a99       20   0  13G 108M  63M S  100   5.4   0:27.88 com.android.vending:background
-  504 system       18  -2  15G 133M  78M S 12.0   6.7   0:42.97 system_server
-   90 root         20   0    0    0    0 R 12.0   0.0   0:31.34 [kswapd0]
- 8801 u0_a97       20   0  14G 311M 248M S  8.0  15.7   0:06.31 com.google.android.apps.messaging
- 9236 shell        20   0  10G 4.6M 3.8M R  4.0   0.2   0:00.00 top -b -n 1
-  598 root          0 -20    0    0    0 I  4.0   0.0   0:03.07 [kworker/u5:3-fscrypt_read_queue]
- 8945 u0_a101      20   0  13G  57M  41M S  0.0   2.8   0:00.15 com.google.android.settings.intelligence
---- app threads state (pid )
---- crash buffer
---------- beginning of crash
-10-27 00:38:11.884  8426  8499 F libc    : Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 8499 (tp-io-6), pid 8426 (aoapp.musically)
-10-27 00:38:12.471  8640  8640 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
-10-27 00:38:12.471  8640  8640 F DEBUG   : Build fingerprint: '[LONG]:12/SE1A.211212.001.B1/8023802:user/release-keys'
-10-27 00:38:12.471  8640  8640 F DEBUG   : Revision: '0'
-10-27 00:38:12.471  8640  8640 F DEBUG   : ABI: 'x86_64'
-10-27 00:38:12.471  8640  8640 F DEBUG   : Timestamp: 2026-10-27 00:38:11.995477323+0000
-10-27 00:38:12.471  8640  8640 F DEBUG   : Process uptime: 0s
-10-27 00:38:12.471  8640  8640 F DEBUG   : Cmdline: com.zhiliaoapp.musically
-10-27 00:38:12.471  8640  8640 F DEBUG   : pid: 8426, tid: 8499, name: tp-io-6  >>> com.zhiliaoapp.musically <<<
-10-27 00:38:12.471  8640  8640 F DEBUG   : uid: 10152
-10-27 00:38:12.471  8640  8640 F DEBUG   : signal 6 (SIGABRT), code -1 (SI_QUEUE), fault addr --------
-10-27 00:38:12.471  8640  8640 F DEBUG   : Abort message: '[LONG].cc:76: CHECK failed: 125526321859696 == 125526321860560'
-10-27 00:38:12.471  8640  8640 F DEBUG   :     rax 0000000000000000  rbx 00000000000020ea  rcx 0000722d9394c5cf  rdx 0000000000000006
-10-27 00:38:12.471  8640  8640 F DEBUG   :     r8  0000000000033000  r9  0000000000033000  r10 0000722a5fe33180  r11 0000000000000203
-10-27 00:38:12.471  8640  8640 F DEBUG   :     r12 0000722b15b01380  r13 0000000000000001  r14 0000722a5fe33178  r15 0000000000002133
-10-27 00:38:12.471  8640  8640 F DEBUG   :     rdi 00000000000020ea  rsi 0000000000002133
-10-27 00:38:12.471  8640  8640 F DEBUG   :     rbp 0000000000000001  rsp 0000722a5fe33170  rip 0000722d9394c5cf
-10-27 00:38:12.471  8640  8640 F DEBUG   : backtrace:
-10-27 00:38:12.471  8640  8640 F DEBUG   :       #00 pc 000000000005e5cf  /apex/com.android.runtime/lib64/bionic/libc.so (abort+191) (BuildId: [LONG])
-10-27 00:38:12.471  8640  8640 F DEBUG   :       #01 pc 0000000000822064  /apex/com.android.art/lib64/libart.so (art::Runtime::Abort(char const*)+596) (BuildId: [LONG])
-10-27 00:38:12.471  8640  8640 F DEBUG   :       #02 pc 00000000000194ac  /apex/com.android.art/lib64/libbase.so (android::base::SetAborter(std::__1::function<void (char const*)>&&)::$_3::__invoke(char const*)+60) (BuildId: [LONG])
-10-27 00:38:12.471  8640  8640 F DEBUG   :       #03 pc 00000000000075f2  /system/lib64/liblog.so (__android_log_assert+370) (BuildId: [LONG])
-10-27 00:38:12.471  8640  8640 F DEBUG   :       #04 pc 0000000000144b24  [LONG].so (ndk_translation::RunGuestCall(unsigned long, ndk_translation::GuestArgumentBuffer*)+340) (BuildId: [LONG])
-10-27 00:38:12.471  8640  8640 F DEBUG   :       #05 pc 000000000013f9d4  [LONG].so (ndk_translation::GuestThread::ProcessPendingSignalsImpl()+644) (BuildId: [LONG])
-10-27 00:38:12.471  8640  8640 F DEBUG   :       #06 pc 00000000001400d7  [LONG].so (ndk_translation::(anonymous namespace)::HandleHostSignal(int, siginfo*, void*)+311) (BuildId: [LONG])
-10-27 00:38:12.471  8640  8640 F DEBUG   :       #07 pc 000000000005ac30  /apex/com.android.runtime/lib64/bionic/libc.so (__restore_rt+0) (BuildId: [LONG])
-10-27 00:38:12.471  8640  8640 F DEBUG   :       #08 pc 000000000005adf7  /apex/com.android.runtime/lib64/bionic/libc.so (syscall+23) (BuildId: [LONG])
-10-27 00:38:12.471  8640  8640 F DEBUG   :       #09 pc 00000000001a3b4f  [LONG].so (ndk_translation::RunKernelSyscall(ndk_translation::ProcessState*)+79) (BuildId: [LONG])
-10-27 00:38:12.471  8640  8640 F DEBUG   :       #10 pc 00000000001760c6  [LONG].so (ndk_translation::InterpretInsn(ndk_translation::ProcessState*)+4342) (BuildId: [LONG])
-10-27 00:38:12.471  8640  8640 F DEBUG   :       #11 pc 00000000001acd8e  [LONG].so (BuildId: [LONG])
---- filtered main/system/events log (errors, native, translation, GL, camera, network, integrity)
-10-27 00:38:38.336  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.zhiliaoapp.musically[iid:33] [isid:E_oOnIJERP6lyMZQOic_IA] status:RESOURCE_FETCH_PROGRESS, size: 95521503/142518208
-10-27 00:38:38.339  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.zhiliaoapp.musically, isid:E_oOnIJERP6lyMZQOic_IA] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT1M8.839S, attempt=0
-10-27 00:38:38.384  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:INSTALLING]
-10-27 00:38:38.384  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:INSTALLING]
-10-27 00:38:38.393  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.zhiliaoapp.musically, isid: E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:38.393  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.zhiliaoapp.musically, isid: E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:38.396  6462  6523 I Finsky:background: [52] RF::PP-Patch: starting to apply patch for com.zhiliaoapp.musically[iid:33] [isid:E_oOnIJERP6lyMZQOic_IA] [tid: 1000000035].
-10-27 00:38:38.538  6462  7842 I Finsky:background: [115] DU: Stored data usage stats for package com.zhiliaoapp.musically; completed bytes: 37600092.
-10-27 00:38:38.580  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <187:RUNNING:62%[62%]> in group com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:38.580  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=187, pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex reason=auto_update isid=E_oOnIJERP6lyMZQOic_IA, [LONG], legacy_status_code=192, size:
-10-27 00:38:38.591  6462  6539 I Finsky:background: [55] RM: getStatus [LONG] request_id=187 pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex isid=E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:38.612  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=187, files_to_download=[df_a_dex(size:58811054)], context[group_id=com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA], display_data[invisible=true, title=TikTok - Video
-10-27 00:38:38.646  6462  6462 I Finsky:background: [2] RF: onProgress request_id=187, pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex isid=E_oOnIJERP6lyMZQOic_IA [LONG] [LONG]
-10-27 00:38:38.910  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <193:RUNNING:64%[64%]> in group com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:38.915  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=193, pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk reason=auto_update isid=E_oOnIJERP6lyMZQOic_IA, [LONG], legacy_st
-10-27 00:38:38.918  6462  6539 I Finsky:background: [55] RM: getStatus [LONG] request_id=193 pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk isid=E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:38.925  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=193, files_to_download=[com.zhiliaoapp.musically.apk(size:41832866)], context[group_id=com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA], display_data[invisible=true, 
-10-27 00:38:38.934  6462  6462 I Finsky:background: [2] RF: onProgress request_id=193, pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk isid=E_oOnIJERP6lyMZQOic_IA [LONG] [LONG]
-10-27 00:38:38.936  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.zhiliaoapp.musically[iid:33] [isid:E_oOnIJERP6lyMZQOic_IA] status:RESOURCE_FETCH_PROGRESS, size: 105281997/142518208
-10-27 00:38:38.944  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.zhiliaoapp.musically, isid:E_oOnIJERP6lyMZQOic_IA] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT1M9.444S, attempt=0
-10-27 00:38:38.959  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.zhiliaoapp.musically, isid: E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:38.975  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:INSTALLING]
-10-27 00:38:40.016   673   804 D EGL_emulation: app_time_stats: avg=3800.77ms min=3800.77ms max=3800.77ms count=1
-10-27 00:38:40.587  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <187:RUNNING:73%[73%]> in group com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:40.588  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=187, pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex reason=auto_update isid=E_oOnIJERP6lyMZQOic_IA, [LONG], legacy_status_code=192, size:
-10-27 00:38:40.592  6462  6521 I Finsky:background: [50] RM: getStatus [LONG] request_id=187 pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex isid=E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:40.593  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=187, files_to_download=[df_a_dex(size:58811054)], context[group_id=com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA], display_data[invisible=true, title=TikTok - Video
-10-27 00:38:40.594  6462  6462 I Finsky:background: [2] RF: onProgress request_id=187, pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex isid=E_oOnIJERP6lyMZQOic_IA [LONG] [LONG]
-10-27 00:38:40.873  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <193:RUNNING:79%[79%]> in group com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:40.873  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=193, pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk reason=auto_update isid=E_oOnIJERP6lyMZQOic_IA, [LONG], legacy_st
-10-27 00:38:40.877  6462  6521 I Finsky:background: [50] RM: getStatus [LONG] request_id=193 pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk isid=E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:40.881  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=193, files_to_download=[com.zhiliaoapp.musically.apk(size:41832866)], context[group_id=com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA], display_data[invisible=true, 
-10-27 00:38:40.891  6462  6462 I Finsky:background: [2] RF: onProgress request_id=193, pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk isid=E_oOnIJERP6lyMZQOic_IA [LONG] [LONG]
-10-27 00:38:42.050  6462  6523 I Finsky:background: [52] RF::PP-Verify: starting to verify for com.zhiliaoapp.musically[iid:33] [isid:E_oOnIJERP6lyMZQOic_IA] [tid: 1000000035].
-10-27 00:38:42.165  6462  6539 I Finsky:background: [55] RM: remove [LONG] request_id=184 pkg_id=com.zhiliaoapp.musically artifact_id=config.arm64_v8a isid=E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:42.187  9102  9102 D AndroidRuntime: >>>>>> START com.android.internal.os.RuntimeInit uid 2000 <<<<<<
-10-27 00:38:42.216  9102  9102 I AndroidRuntime: Using default boot image
-10-27 00:38:42.216  9102  9102 I AndroidRuntime: Leaving lock profiling enabled
-10-27 00:38:42.334  6462  7820 I Finsky:background: [109] DS: DS: onRemove(request_id=184, files_to_download=[config.arm64_v8a(size:37600092)], context[group_id=com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA], display_data[invisible=true, title=TikTok - Video
-10-27 00:38:42.648  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <187:RUNNING:86%[86%]> in group com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:42.650  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=187, pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex reason=auto_update isid=E_oOnIJERP6lyMZQOic_IA, [LONG], legacy_status_code=192, size:
-10-27 00:38:42.653  6462  6539 I Finsky:background: [55] RM: getStatus [LONG] request_id=187 pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex isid=E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:42.673  8801  8855 I duir    : BugleStartup: Updating app config...
-10-27 00:38:42.688  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=187, files_to_download=[df_a_dex(size:58811054)], context[group_id=com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA], display_data[invisible=true, title=TikTok - Video
-10-27 00:38:42.724  8801  8855 I duir    : BugleStartup: Done with app config.
-10-27 00:38:42.724  8801  8855 I duir    : BugleStartup: Handling shared prefs upgrade & Load MMS Configuration...
-10-27 00:38:42.733  9102  9102 D AndroidRuntime: Calling main entry com.android.commands.uiautomator.Launcher
-10-27 00:38:42.742  6462  6462 I Finsky:background: [2] RF: onProgress request_id=187, pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex isid=E_oOnIJERP6lyMZQOic_IA [LONG] [LONG]
-10-27 00:38:42.746  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.zhiliaoapp.musically[iid:33] [isid:E_oOnIJERP6lyMZQOic_IA] status:RESOURCE_FETCH_PROGRESS, size: 125880988/142518208
-10-27 00:38:42.755  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.zhiliaoapp.musically, isid:E_oOnIJERP6lyMZQOic_IA] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT1M13.255S, attempt=0
-10-27 00:38:42.793  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.zhiliaoapp.musically, isid: E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:42.834  8801  8869 I duir    : BugleStartup: Done initializing with enabled individual init failures.
-10-27 00:38:42.867  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:INSTALLING]
-10-27 00:38:42.905  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <193:RUNNING:95%[95%]> in group com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:42.909  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=193, pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk reason=auto_update isid=E_oOnIJERP6lyMZQOic_IA, [LONG], legacy_st
-10-27 00:38:42.909  6462  6539 I Finsky:background: [55] RM: getStatus [LONG] request_id=193 pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk isid=E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:42.917  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=193, files_to_download=[com.zhiliaoapp.musically.apk(size:41832866)], context[group_id=com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA], display_data[invisible=true, 
-10-27 00:38:42.921  6462  6462 I Finsky:background: [2] RF: onProgress request_id=193, pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk isid=E_oOnIJERP6lyMZQOic_IA [LONG] [LONG]
-10-27 00:38:43.362  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <193:RUNNING:100%[100%]> in group com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:43.362  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=193, pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk reason=auto_update isid=E_oOnIJERP6lyMZQOic_IA, [LONG], legacy_st
-10-27 00:38:43.363  6462  6539 I Finsky:background: [55] RM: getStatus [LONG] request_id=193 pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk isid=E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:43.371  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=193, files_to_download=[com.zhiliaoapp.musically.apk(size:41832866)], context[group_id=com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA], display_data[invisible=true, 
-10-27 00:38:43.372  6462  6462 I Finsky:background: [2] RF: onProgress request_id=193, pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk isid=E_oOnIJERP6lyMZQOic_IA [LONG] [LONG]
-10-27 00:38:43.393  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <193:SUCCEEDED> in group com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:43.397  6462  7820 I Finsky:background: [109] RM: receive resource status onSuccess download_request_id=193, pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk reason=auto_update isid=E_oOnIJERP6lyMZQOic_IA, [LONG], legacy_sta
-10-27 00:38:43.401  6462  6521 I Finsky:background: [50] RM: getStatus [LONG] request_id=193 pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk isid=E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:43.402  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=193, files_to_download=[com.zhiliaoapp.musically.apk(size:41832866)], context[group_id=com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA], display_data[invisible=true, 
-10-27 00:38:43.404  6462  6462 I Finsky:background: [2] RF: onResourceSuccess request_id=193, pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk isid=E_oOnIJERP6lyMZQOic_IA [LONG] [LONG]
-10-27 00:38:43.404  6462  6462 I Finsky:background: [2] RF: onSuccess request_id=193, pkg_id=com.zhiliaoapp.musically artifact_id=com.zhiliaoapp.musically.apk isid=E_oOnIJERP6lyMZQOic_IA [LONG] [LONG]
-10-27 00:38:43.406  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.zhiliaoapp.musically[iid:33] [isid:E_oOnIJERP6lyMZQOic_IA] status:RESOURCE_FETCH_PROGRESS, size: 134659466/142518208
-10-27 00:38:43.410  6462  6523 I Finsky:background: [52] RF: starting postprocessing for com.zhiliaoapp.musically.apk
-10-27 00:38:43.412  6462  6523 I Finsky:background: [52] RF::PP-Patch: starting to apply patch for com.zhiliaoapp.musically[iid:33] [isid:E_oOnIJERP6lyMZQOic_IA] [tid: 1000000035].
-10-27 00:38:43.412  6462  6523 I Finsky:background: [52] IV2::PP: Get source file from installed app for com.zhiliaoapp.musically.apk
-10-27 00:38:43.417  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.zhiliaoapp.musically, isid:E_oOnIJERP6lyMZQOic_IA] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT1M13.917S, attempt=0
-10-27 00:38:43.431  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.zhiliaoapp.musically[iid:33] [isid:E_oOnIJERP6lyMZQOic_IA] status:RESOURCE_FETCH_PROGRESS, size: 134659466/142518208
-10-27 00:38:43.449  6462  7842 I Finsky:background: [115] DU: Stored data usage stats for package com.zhiliaoapp.musically; completed bytes: 41832866.
-10-27 00:38:43.466  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.zhiliaoapp.musically, isid: E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:43.475  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.zhiliaoapp.musically, isid:E_oOnIJERP6lyMZQOic_IA] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT1M13.975S, attempt=0
-10-27 00:38:43.505  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.zhiliaoapp.musically, isid: E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:43.525  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:INSTALLING]
-10-27 00:38:43.526  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:INSTALLING]
-10-27 00:38:43.816   673   804 D EGL_emulation: app_time_stats: avg=1899.95ms min=334.77ms max=3465.12ms count=2
-10-27 00:38:43.894  9102  9102 D AndroidRuntime: Shutting down VM
-10-27 00:38:44.229  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <187:RUNNING:100%[100%]> in group com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:44.229  6462  7820 I Finsky:background: [109] RM: receive resource status onProgress download_request_id=187, pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex reason=auto_update isid=E_oOnIJERP6lyMZQOic_IA, [LONG], legacy_status_code=192, size:
-10-27 00:38:44.229  6462  6521 I Finsky:background: [50] RM: getStatus [LONG] request_id=187 pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex isid=E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:44.235  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=187, files_to_download=[df_a_dex(size:58811054)], context[group_id=com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA], display_data[invisible=true, title=TikTok - Video
-10-27 00:38:44.236  6462  6462 I Finsky:background: [2] RF: onProgress request_id=187, pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex isid=E_oOnIJERP6lyMZQOic_IA [LONG] [LONG]
-10-27 00:38:44.248  6462  7820 I Finsky:background: [109] DSC::L: Update all listeners for download <187:SUCCEEDED> in group com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:44.248  6462  7820 I Finsky:background: [109] RM: receive resource status onSuccess download_request_id=187, pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex reason=auto_update isid=E_oOnIJERP6lyMZQOic_IA, [LONG], legacy_status_code=200, size: 
-10-27 00:38:44.248  6462  6521 I Finsky:background: [50] RM: getStatus [LONG] request_id=187 pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex isid=E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:44.258  6462  7842 I Finsky:background: [115] DU: Stored data usage stats for package com.zhiliaoapp.musically; completed bytes: 58811054.
-10-27 00:38:44.273  6462  7820 I Finsky:background: [109] DS: DS: onReviveDownload(request_id=187, files_to_download=[df_a_dex(size:58811054)], context[group_id=com.zhiliaoapp.musically:E_oOnIJERP6lyMZQOic_IA], display_data[invisible=true, title=TikTok - Video
-10-27 00:38:44.275  6462  6462 I Finsky:background: [2] RF: onResourceSuccess request_id=187, pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex isid=E_oOnIJERP6lyMZQOic_IA [LONG] [LONG]
-10-27 00:38:44.275  6462  6462 I Finsky:background: [2] RF: onSuccess request_id=187, pkg_id=com.zhiliaoapp.musically artifact_id=df_a_dex isid=E_oOnIJERP6lyMZQOic_IA [LONG] [LONG]
-10-27 00:38:44.276  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.zhiliaoapp.musically[iid:33] [isid:E_oOnIJERP6lyMZQOic_IA] status:RESOURCE_FETCH_PROGRESS, size: 142518208/142518208
-10-27 00:38:44.277  6462  6541 I Finsky:background: [56] IV2: onTaskProgress com.zhiliaoapp.musically[iid:33] [isid:E_oOnIJERP6lyMZQOic_IA] status:RESOURCE_FETCH_PROGRESS, size: 142518208/142518208
-10-27 00:38:44.281  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.zhiliaoapp.musically, isid:E_oOnIJERP6lyMZQOic_IA] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT1M14.781S, attempt=0
-10-27 00:38:44.289  6462  6519 I Finsky:background: [49] RF::PP-Patch: starting to apply patch for com.zhiliaoapp.musically[iid:33] [isid:E_oOnIJERP6lyMZQOic_IA] [tid: 1000000035].
-10-27 00:38:44.293  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.zhiliaoapp.musically, isid: E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:44.300  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.zhiliaoapp.musically, isid:E_oOnIJERP6lyMZQOic_IA] state:DOWNLOADING, status=DOWNLOADING, status_code=0, reason=auto_update, tsc=PT1M14.8S, attempt=0
-10-27 00:38:44.318  6462  6462 I Finsky:background: [2] PIM: Ignore install package event for: com.zhiliaoapp.musically, isid: E_oOnIJERP6lyMZQOic_IA
-10-27 00:38:44.491  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:INSTALLING]
-10-27 00:38:44.583  6609  6609 I Finsky  : [2] IQ::HLD: if pauseAppUpdates is called now, it must wait for these ongoing installs: [[Package:com.google.android.googlequicksearchbox, isid:L2sPBfBvRUeglzcGP700Hg] state:INSTALLING]
-10-27 00:38:44.827  6462  6518 I Finsky:background: [48] IV2:TM: cleaning up task. com.google.android.googlequicksearchbox[iid:32] [isid:L2sPBfBvRUeglzcGP700Hg] [tid: 1000000034]
-10-27 00:38:44.865  6462  6572 I Finsky:background: [65] IQ: Notifying installation update. [Package:com.google.android.googlequicksearchbox, isid:L
+ 4823 shell        20   0  10G 4.7M 3.9M R  0.0   0.1   0:00.00 top -b -n 1
+ 4401 u0_a100      20   0  14G 164M 118M S  0.0   4.1   0:00.08 com.google.android.googlequicksearchbox
+ 4224 u0_a72       20   0  13G  94M  53M S  0.0   2.4   0:00.02 com.android.providers.calendar
+ 4190 u0_a93       20   0  13G  99M  57M S  0.0   2.5   0:00.02 com.android.dialer
+ 4112 u0_a99       20   0  13G 185M 120M S  0.0   4.7   0:00.23 com.android.vending:background
+=== launching Snapchat 01:59:44: log in by hand now if you want the hang captured ===
+## Network stats: elapsed time=6ms (0ms mobile, 0ms wifi, 6ms not connected)
+--- t+30s pid=[4846] /system/bin/sh: SwapFree: inaccessible or not found 
+  mCurrentFocus=Window{3bc9ffb u0 com.snapchat.android/com.snap.identity.loginsignup.ui.LoginSignupActivity}
+--- t+60s pid=[4846] /system/bin/sh: SwapFree: inaccessible or not found 
+  mCurrentFocus=Window{3bc9ffb u0 com.snapchat.android/com.snap.identity.loginsignup.ui.LoginSignupActivity}
+--- t+90s pid=[4846] /system/bin/sh: SwapFree: inaccessible or not found 
+  mCurrentFocus=Window{3bc9ffb u0 com.snapchat.android/com.snap.identity.loginsignup.ui.LoginSignupActivity}
+--- t+120s pid=[4846] /system/bin/sh: SwapFree: inaccessible or not found 
+  mCurrentFocus=Window{3bc9ffb u0 com.snapchat.android/com.snap.identity.loginsignup.ui.LoginSignupActivity}
+--- t+150s pid=[4846] /system/bin/sh: SwapFree: inaccessible or not found 
+  mCurrentFocus=Window{3bc9ffb u0 com.snapchat.android/com.snap.identity.loginsignup.ui.LoginSignupActivity}
+--- t+180s pid=[4846] /system/bin/sh: SwapFree: inaccessible or not found 
+  mCurrentFocus=Window{3bc9ffb u0 com.snapchat.android/com.snap.identity.loginsignup.ui.LoginSignupActivity}
+--- t+210s pid=[4846] /system/bin/sh: SwapFree: inaccessible or not found 
+  mCurrentFocus=Window{3bc9ffb u0 com.snapchat.android/com.snap.identity.loginsignup.ui.LoginSignupActivity}
+=== Snapchat process warnings/errors (pid 4846) ===
+--------- beginning of main
+10-27 01:59:44.382  4846  4846 W napchat.androi: Unexpected CPU variant for X86 using defaults: x86_64
+10-27 01:59:44.522  4846  4846 E napchat.androi: Not starting debugger since process cannot load the jdwp agent.
+10-27 01:59:44.558  4846  4846 W napchat.androi: Entry not found
+10-27 01:59:44.558  4846  4846 W napchat.androi: Entry not found
+10-27 01:59:44.558  4846  4846 W napchat.androi: Entry not found
+10-27 01:59:44.559  4846  4846 W napchat.androi: JIT profile information will not be recorded: profile file does not exist.
+10-27 01:59:44.559  4846  4846 W napchat.androi: JIT profile information will not be recorded: profile file does not exist.
+10-27 01:59:44.559  4846  4846 W napchat.androi: JIT profile information will not be recorded: profile file does not exist.
+10-27 01:59:44.993  4846  4868 E SQLiteLog: (283) recovered 66 frames from WAL file /data/data/com.snapchat.android/databases/core.db-wal
+10-27 01:59:45.399  4846  4882 E SQLiteLog: (283) recovered 56 frames from WAL file /data/data/com.snapchat.[LONG]
+10-27 01:59:45.409  4846  4867 E SQLiteLog: (283) recovered 17 frames from WAL file /data/data/com.snapchat.android/databases/journal.db-wal
+10-27 01:59:45.449  4846  4891 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
+10-27 01:59:45.475  4846  4891 W Gralloc4: allocator 4.x is not supported
+=== kills / low memory / ANR involving Snapchat ===
+10-27 01:59:44.241   503   516 I am_kill : [0,4002,com.snapchat.android,945,stop com.snapchat.android due to from pid 4827]
+=== crash buffer ===
+=== diag finished 02:03:15 ===
