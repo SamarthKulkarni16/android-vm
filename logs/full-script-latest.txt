@@ -1,54 +1,7 @@
-=== session script start Tue Oct 27 00:35:35 UTC 2026, run 40427010035, ends Tue Oct 27 05:32:07 UTC 2026 ===
+=== session script start Tue Oct 27 01:58:07 UTC 2026, run 40435189223, ends Tue Oct 27 06:53:19 UTC 2026 ===
 List of devices attached
 emulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emulator64_x86_64_arm64 transport_id:1
 
 === opening ngrok tcp tunnel ===
-adb connect 2.tcp.ngrok.io:16684
-[main efef7a6] state running run 40427010035
- 3 files changed, 11 insertions(+), 191 deletions(-)
-To https://github.com/SamarthKulkarni16/android-vm
-   f85066c..efef7a6  main -> main
-app-diag d26a written to logs/app-diag.txt (60000 bytes)
-[main e962914] app diag run 40427010035
- 1 file changed, 437 insertions(+)
- create mode 100644 logs/app-diag.txt
-To https://github.com/SamarthKulkarni16/android-vm
-   efef7a6..e962914  main -> main
-=== saving phone state g20261027T0055 (encrypted) at Tue Oct 27 00:55:52 UTC 2026 ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 6222336
--rw-r--r-- 1 runner runner 1887436800 Oct 27 00:56 avd-g20261027T0055-p1of4
--rw-r--r-- 1 runner runner 1887436800 Oct 27 00:57 avd-g20261027T0055-p2of4
--rw-r--r-- 1 runner runner 1887436800 Oct 27 00:58 avd-g20261027T0055-p3of4
--rw-r--r-- 1 runner runner  709361056 Oct 27 00:59 avd-g20261027T0055-p4of4
-save ok g20261027T0055 at Tue Oct 27 01:00:13 UTC 2026; kept: g20261027T0055 c20261026T0722
-On branch main
-Your branch is up to date with 'origin/main'.
-
-nothing to commit, working tree clean
-=== saving phone state g20261027T0115 (encrypted) at Tue Oct 27 01:15:59 UTC 2026 ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 6222140
--rw-r--r-- 1 runner runner 1887436800 Oct 27 01:16 avd-g20261027T0115-p1of4
--rw-r--r-- 1 runner runner 1887436800 Oct 27 01:17 avd-g20261027T0115-p2of4
--rw-r--r-- 1 runner runner 1887436800 Oct 27 01:18 avd-g20261027T0115-p3of4
--rw-r--r-- 1 runner runner  709158784 Oct 27 01:19 avd-g20261027T0115-p4of4
-save ok g20261027T0115 at Tue Oct 27 01:20:20 UTC 2026; kept: g20261027T0115 c20261026T0722
-On branch main
-Your branch is up to date with 'origin/main'.
-
-nothing to commit, working tree clean
-=== saving phone state g20261027T0136 (encrypted) at Tue Oct 27 01:36:07 UTC 2026 ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-total 6221828
--rw-r--r-- 1 runner runner 1887436800 Oct 27 01:36 avd-g20261027T0136-p1of4
--rw-r--r-- 1 runner runner 1887436800 Oct 27 01:37 avd-g20261027T0136-p2of4
--rw-r--r-- 1 runner runner 1887436800 Oct 27 01:38 avd-g20261027T0136-p3of4
--rw-r--r-- 1 runner runner  708840528 Oct 27 01:39 avd-g20261027T0136-p4of4
-save ok g20261027T0136 at Tue Oct 27 01:40:13 UTC 2026; kept: g20261027T0136 c20261026T0722
-On branch main
-Your branch is up to date with 'origin/main'.
-
-nothing to commit, working tree clean
-=== saving phone state c20261027T0147 (encrypted) at Tue Oct 27 01:47:12 UTC 2026 ===
-=== stopping: emulator stopped by itself at Tue Oct 27 01:48:33 UTC 2026 ===
+[nav] 3-button navigation requested
+adb connect 0.tcp.ngrok.io:19748
