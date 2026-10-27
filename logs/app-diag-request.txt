@@ -1,2 +1,2 @@
-id: d26a
-apps: com.snapchat.android tiktok
+id: d26b
+apps: com.snapchat.android
