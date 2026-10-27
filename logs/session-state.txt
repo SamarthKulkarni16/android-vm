@@ -1,6 +1,5 @@
 run_id: 40427010035
 v: 2
-state: saving
-note: emulator stopped by itself
-updated: 2026-10-27T01:48:33Z
-ends_utc: 2026-10-27T05:32:07Z
+state: ended
+note: emergency save
+updated: 2026-10-27T01:50:39Z
