@@ -30,6 +30,12 @@ stop_requested() {
 echo "=== session script start $(date -u), run ${RUN_ID}, ends $(date -u -d @$END) ===" >> $LOGF
 adb devices -l >> $LOGF 2>&1 || true
 
+# CEO 2026-10-27: classic 3-button navigation bar (Back triangle, Home circle, Recents square) instead of gestures.
+# Saved with the phone, repeated on every boot to be safe.
+( adb shell cmd overlay enable com.android.internal.systemui.navbar.threebutton >> $LOGF 2>&1 || true
+  adb shell settings put secure navigation_mode 0 >> $LOGF 2>&1 || true
+  echo "[nav] 3-button navigation requested" >> $LOGF ) &
+
 # accept the adb 'Allow USB debugging' dialog for trusted keys (production image, no root); runs in the background
 (
   no_dialog=0
