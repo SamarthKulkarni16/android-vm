@@ -69,6 +69,9 @@ echo "adb connect $HOSTPORT" >> $LOGF
 { echo "adb connect $HOSTPORT"; echo "run_id: ${RUN_ID}"; echo "v: 2"; echo "state: running"; echo "generated: $(date -u)"; echo "ends_utc: $(date -u -d @$END +%FT%TZ)"; } > logs/connect-now.txt
 set_state running "phone ready"
 
+# CEO 2026-10-26: one-shot Snapchat/TikTok diagnostics, only when logs/app-diag-request.txt asks for it (read-only, redacted)
+if [ -f app-diag.sh ] && [ -f logs/app-diag-request.txt ]; then ( RUN_ID=${RUN_ID} bash app-diag.sh >> $LOGF 2>&1; gpush "app diag run ${RUN_ID}" ) & fi
+
 SAVEPID=""; LAST_SAVE=$(date +%s); DEAD=0; REASON=""
 while true; do
   NOW=$(date +%s)
