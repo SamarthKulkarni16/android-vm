@@ -1,6 +1,6 @@
 run_id: 41174013691
 v: 2
-state: running
-note: phone ready
-updated: 2026-10-31T05:51:29Z
+state: saving
+note: 5 hour limit reached
+updated: 2026-10-31T10:48:15Z
 ends_utc: 2026-10-31T10:48:06Z
