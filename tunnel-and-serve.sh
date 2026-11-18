@@ -30,11 +30,26 @@ stop_requested() {
 echo "=== session script start $(date -u), run ${RUN_ID}, ends $(date -u -d @$END) ===" >> $LOGF
 adb devices -l >> $LOGF 2>&1 || true
 
-# CEO 2026-10-27: classic 3-button navigation bar (Back triangle, Home circle, Recents square) instead of gestures.
-# Saved with the phone, repeated on every boot to be safe.
-( adb shell cmd overlay enable com.android.internal.systemui.navbar.threebutton >> $LOGF 2>&1 || true
-  adb shell settings put secure navigation_mode 0 >> $LOGF 2>&1 || true
-  echo "[nav] 3-button navigation requested" >> $LOGF ) &
+# CEO 2026-11-18: classic 3-button navigation bar (Back triangle, Home circle, Recents square) instead of gestures.
+# The 10-27 version used plain 'overlay enable', which does not switch off the gesture overlay of the same category.
+# Now: wait for boot, use enable-exclusive --category, retry until the overlay list confirms it. Also logs the storage size.
+( for i in $(seq 1 60); do
+    [ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = 1 ] && break
+    sleep 5
+  done
+  NAVOK=0
+  for i in $(seq 1 12); do
+    adb shell cmd overlay enable-exclusive --category com.android.internal.systemui.navbar.threebutton >> $LOGF 2>&1 || true
+    sleep 5
+    if adb shell cmd overlay list 2>/dev/null | grep -q '\[x\] com.android.internal.systemui.navbar.threebutton'; then NAVOK=1; break; fi
+    sleep 10
+  done
+  if [ $NAVOK = 1 ]; then echo "[nav] 3-button navigation is ACTIVE" >> $LOGF; else echo "[nav] 3-button navigation NOT confirmed" >> $LOGF; fi
+  adb shell cmd overlay list 2>/dev/null | grep -i navbar >> $LOGF 2>&1 || true
+  adb shell pm trim-caches 4G >> $LOGF 2>&1 || true
+  echo "[storage] phone data partition now:" >> $LOGF
+  adb shell df -h /data >> $LOGF 2>&1 || true
+) &
 
 # accept the adb 'Allow USB debugging' dialog for trusted keys (production image, no root); runs in the background
 (
