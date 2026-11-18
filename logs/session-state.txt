@@ -1,6 +1,4 @@
-run_id: 44248568471
+run_id: 44285286087
 v: 2
-state: ended
-note: close button (X) pressed
-updated: 2026-11-18T06:33:02Z
-ends_utc: 2026-11-18T11:03:51Z
+state: booting
+updated: 2026-11-18T10:25:39Z
