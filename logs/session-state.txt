@@ -1,6 +1,6 @@
 run_id: 44217988605
 v: 2
-state: running
-note: phone ready
-updated: 2026-11-18T01:52:32Z
+state: saving
+note: close button (X) pressed
+updated: 2026-11-18T05:11:26Z
 ends_utc: 2026-11-18T06:43:40Z
