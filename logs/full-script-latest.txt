@@ -1,43 +1,16 @@
-=== session script start Wed Nov 18 06:08:43 UTC 2026, run 44248568471, ends Wed Nov 18 11:03:51 UTC 2026 ===
+=== session script start Wed Nov 18 10:28:56 UTC 2026, run 44285286087, ends Wed Nov 18 15:25:39 UTC 2026 ===
 List of devices attached
 emulator-5554          device product:sdk_gphone64_x86_64 model:sdk_gphone64_x86_64 device:emulator64_x86_64_arm64 transport_id:1
 
 === opening ngrok tcp tunnel ===
 [nav] 3-button navigation is ACTIVE
 [ ] com.android.internal.systemui.navbar.gestural_wide_back
-[x] com.android.internal.systemui.navbar.threebutton
 [ ] com.android.internal.systemui.navbar.twobutton
 [ ] com.android.internal.systemui.navbar.gestural_extra_wide_back
 [ ] com.android.internal.systemui.navbar.gestural
 [ ] com.android.internal.systemui.navbar.gestural_narrow_back
+[x] com.android.internal.systemui.navbar.threebutton
 [storage] phone data partition now:
 Filesystem      Size Used Avail Use% Mounted on
-/dev/block/dm-5  16G 293M   15G   2% /storage/emulated/0/Android/obb
+/dev/block/dm-5 5.8G 5.0G  600M  90% /storage/emulated/0/Android/obb
 adb connect 4.tcp.ngrok.io:21407
-[main 6074b43] state running run 44248568471
- 3 files changed, 21 insertions(+), 137 deletions(-)
-To https://github.com/SamarthKulkarni16/android-vm
-   c558ca7..6074b43  main -> main
-app-diag d26b already done
-On branch main
-Your branch is up to date with 'origin/main'.
-
-nothing to commit, working tree clean
-=== saving phone state g20261118T0628 (encrypted) at Wed Nov 18 06:28:54 UTC 2026 ===
-tar: persistent_avd.avd/userdata-qemu.img.qcow2: file changed as we read it
-=== stopping: close button (X) pressed at Wed Nov 18 06:30:17 UTC 2026 ===
-[main 6f54087] state saving run 44248568471
- 2 files changed, 15 insertions(+), 3 deletions(-)
-To https://github.com/SamarthKulkarni16/android-vm
-   a436d37..d672f15  main -> main
-OK: killing emulator, bye bye
-OK
-error writing output file
-tar: -: Wrote only 6144 of 10240 bytes
-tar: Child returned status 141
-tar: Error is not recoverable: exiting now
-=== saving phone state c20261118T0630 (encrypted) at Wed Nov 18 06:30:23 UTC 2026 ===
-total 1908920
--rw-r--r-- 1 runner runner 1887436800 Nov 18 06:31 avd-c20261118T0630-p1of2
--rw-r--r-- 1 runner runner   67292944 Nov 18 06:31 avd-c20261118T0630-p2of2
-save ok c20261118T0630 at Wed Nov 18 06:33:02 UTC 2026; kept: c20261118T0630 c20261118T0511
