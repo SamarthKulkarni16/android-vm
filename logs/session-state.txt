@@ -1,4 +1,6 @@
 run_id: 44248568471
 v: 2
-state: booting
-updated: 2026-11-18T06:03:51Z
+state: running
+note: phone ready
+updated: 2026-11-18T06:08:49Z
+ends_utc: 2026-11-18T11:03:51Z
