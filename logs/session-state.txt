@@ -1,6 +1,6 @@
 run_id: 44248568471
 v: 2
-state: saving
+state: ended
 note: close button (X) pressed
-updated: 2026-11-18T06:30:17Z
+updated: 2026-11-18T06:33:02Z
 ends_utc: 2026-11-18T11:03:51Z
