@@ -1,6 +1,2 @@
-adb connect 4.tcp.ngrok.io:21407
-run_id: 44285286087
-v: 2
-state: running
-generated: Wed Nov 18 10:29:02 UTC 2026
-ends_utc: 2026-11-18T15:25:39Z
+run_id: 44461104732
+state: booting
